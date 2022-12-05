@@ -1,7 +1,7 @@
 #!/bin/bash
 
 [[ -d ~/venvs ]] || mkdir ~/venvs
-python -m venv ~/venvs/cs
+python3 -m venv ~/venvs/cs
 . ~/venvs/cs/Scripts/activate
-python -m pip install -U pip
-python -m pip install -U javaobj-py3
+python3 -m pip install -U pip
+python3 -m pip install -U javaobj-py3
