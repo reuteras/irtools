@@ -44,17 +44,27 @@ if __name__=="__main__":
 
             # Handle different data types 
             datatype = path.basename(filename).split('.')[0]
-            if datatype in ["credentials", "listeners", "sessions", "targets", "c2info"]:
+            if datatype in ["archives", "beacons", "services", "credentials", "listeners", "sessions", "targets", "c2info"]:
                 with open(path.join(output_folder, f"{datatype}.csv"), 'w', newline='') as csvfile:
                     # Assume it's a dict, if not, try a list.
                     try:
                         bindata = [d for k,d in javaobj.loads(open(filename,"rb").read()).items()]
                     except:
                         bindata = [javaobj.loads(open(filename,"rb").read())]
-
+                    
+                    if datatype in ["archives"]:
+                        tempdata = bindata
+                        bindata = []
+                        for entry in tempdata:
+                            bindata.append({entry.annotations[1]: entry.annotations[2], entry.annotations[3]: entry.annotations[4], entry.annotations[5]: entry.annotations[6]})
                     # Output data
                     if len(bindata) > 0:
-                        writer = csv.DictWriter(csvfile, fieldnames=bindata[0].keys(), extrasaction='ignore')
+                        max_keys = 0
+                        for entry in bindata:
+                            if len(entry.keys()) > max_keys:
+                                max_keys = len(entry.keys())
+                                csvfieldnames=entry.keys()
+                        writer = csv.DictWriter(csvfile, fieldnames=csvfieldnames, extrasaction='raise', restval='')
 
                         writer.writeheader()
                         for entry in bindata:
