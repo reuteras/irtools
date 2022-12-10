@@ -59,11 +59,11 @@ if __name__=="__main__":
                             bindata.append({entry.annotations[1]: entry.annotations[2], entry.annotations[3]: entry.annotations[4], entry.annotations[5]: entry.annotations[6]})
                     # Output data
                     if len(bindata) > 0:
-                        max_keys = 0
+                        csvfieldnames = []
                         for entry in bindata:
-                            if len(entry.keys()) > max_keys:
-                                max_keys = len(entry.keys())
-                                csvfieldnames=entry.keys()
+                            for key in entry.keys():
+                                if not key in csvfieldnames:
+                                    csvfieldnames.append(key)
                         writer = csv.DictWriter(csvfile, fieldnames=csvfieldnames, extrasaction='raise', restval='')
 
                         writer.writeheader()
