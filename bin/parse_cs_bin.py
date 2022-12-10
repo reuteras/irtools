@@ -55,7 +55,7 @@ if __name__=="__main__":
                     if datatype in ["archives"]:
                         tempdata = bindata
                         bindata = []
-                        for entry in tempdata:
+                        for entry in tempdata[0]:
                             bindata.append({entry.annotations[1]: entry.annotations[2], entry.annotations[3]: entry.annotations[4], entry.annotations[5]: entry.annotations[6]})
                     # Output data
                     if len(bindata) > 0:
