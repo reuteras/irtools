@@ -9,7 +9,7 @@
   <MappedFolders>
     <MappedFolder>
       <HostFolder>__SANDBOX__\tools</HostFolder>
-	  <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\tools</SandboxFolder>
+	  <SandboxFolder>C:\Users\WDAGUtilityAccount\Documents\tools</SandboxFolder>
       <ReadOnly>true</ReadOnly>
     </MappedFolder>
 	<MappedFolder>
@@ -24,6 +24,6 @@
     </MappedFolder>
   </MappedFolders>
   <LogonCommand>
-    <Command>C:\Users\WDAGUtilityAccount\Desktop\tools\autostart.cmd</Command>
+    <Command>C:\Users\WDAGUtilityAccount\Documents\tools\autostart.cmd</Command>
   </LogonCommand>
 </Configuration>
