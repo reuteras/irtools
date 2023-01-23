@@ -20,13 +20,15 @@ Function Download-File {
 
 Try {
   Download-File -url "https://update.code.visualstudio.com/latest/win32-x64-user/stable" -path "$($PSScriptRoot)\..\tools\downloads\vscode.exe"
+  Download-File -url "https://github.com/dnSpyEx/dnSpy/releases/download/v6.3.0/dnSpy-net-win64.zip" -path "$($PSScriptRoot)\..\tools\downloads\dnSpy.zip"
+  Download-File -url "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-pc-windows-msvc.zip" -path "$($PSScriptRoot)\..\tools\downloads\ripgrep.zip"
   Download-File -url "https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.msi" -path "$($PSScriptRoot)\..\tools\downloads\corretto.msi"
   Download-File -url "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.8/npp.8.4.8.Installer.x64.exe" -path "$($PSScriptRoot)\..\tools\downloads\notepad++.exe"
   Download-File -url "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.2.2_build/ghidra_10.2.2_PUBLIC_20221115.zip" -path "$($PSScriptRoot)\..\tools\downloads\ghidra.zip"
   Download-File -url "https://www.7-zip.org/a/7z2201-x64.msi" -path "$($PSScriptRoot)\..\tools\downloads\7zip.msi"
   Download-File -url "https://download.sysinternals.com/files/SysinternalsSuite.zip" -path "$($PSScriptRoot)\..\tools\downloads\sysinternals.zip"
   Download-File -url "https://sourceforge.net/projects/x64dbg/files/latest/download" -path "$($PSScriptRoot)\..\tools\downloads\x64dbg.zip"
-  Download-File -url "https://www.python.org/ftp/python/3.11.1/python-3.11.1-amd64.exe" -path "$($PSScriptRoot)\..\tools\downloads\python3.exe"
+  Download-File -url "https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe" -path "$($PSScriptRoot)\..\tools\downloads\python3.exe"
   Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\tools\downloads\hxd.zip"
   Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\tools\downloads\npcap.exe"
   Download-File -url "https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.3.exe" -path "$($PSScriptRoot)\..\tools\downloads\wireshark.exe"
