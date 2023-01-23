@@ -1,39 +1,46 @@
 # Windows Sandbox
 
-A collection of script to install some tools in a Windows Sandbox. Started with the code in the repo [Windows Sandbox Configuration][wsc]. Updated versions and also added more tools and removed some. 
+A collection of script to install tools for DFIR in Windows Sandbox. Started with the code in this repo [Windows Sandbox Configuration][wsc]. Updated versions and also added more tools and removed some. 
 
 Included tools:
 
-- Visual Studio Code
 - Amazon Corretto
-- Notepad++
-- Ghidra
-- SysinternalsSuite
-- x64dbg
-- Python
+- capa
+- dnSpy (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - HxD
-- upx
+- Ghidra
+- Notepad++
 - PE-bear
 - PEstudio
+- Python
+- SysinternalsSuite
 - Sysmon started with SwiftOnSecurity sysmon-config
-- capa
+- x64dbg
+- upx
+- Visual Studio Code
 - Zimmerman Tools
 - Selected scripts from Didier Stevens
 
-Downloaded but not installed:
+Downloaded but not installed by default:
 
 - Wireshark
 - npcap
 
 ## Installation and configuration
 
-First enable Windows Sandbox by running Add and remove Windows features.
+First enable Windows Sandbox by running **Add and remove Windows features**.
 
-Start a PowerShell terminal.
+Then start a PowerShell terminal and download the code.
 
 	git clone https:/github.com/reuteras/irtools.git
 	cd irtools/wsb
+
+Create configuration with local path by running.
+
 	./createSandboxConfig.ps1
+
+You need to have Python 3.10 installed (or change to another version in the Sandbox by modifying the scripts).
+
 	./downloadFiles.ps1
 
 ## Usage
