@@ -1,7 +1,7 @@
 # Download git repositories
 
-New-Item -ItemType Directory -Force -Path tools\download\git
-cd tools\download\git
+New-Item -ItemType Directory -Force -Path tools\downloads\git
+cd tools\downloads\git
 
 $repourls = "https://github.com/volexity/threat-intel.git"
 
