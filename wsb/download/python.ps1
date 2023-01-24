@@ -10,7 +10,7 @@ pip2pi ./tools/downloads/pip `
     chepy[extras] dnslib docx2txt dpkt extract-msg fonttools hachoir javaobj `
     lxml pyelftools pypng python-magic PyYaml minidump msoffcrypto-tool `
     name-that-hash numpy olefile olefile oletools[full] openpyxl pandas `
-    pcode2code pcodedmp pefile peutils ppdeep pycryptodome pyzipper `
+    pcode2code pcodedmp pefile peutils ppdeep pycryptodome python-magic-bin pyzipper `
     time-decode visidata xlrd XLMMacroDeobfuscator yara-python wheel
 
 deactivate
