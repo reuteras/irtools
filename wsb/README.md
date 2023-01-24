@@ -4,27 +4,31 @@ A collection of script to install tools for DFIR in Windows Sandbox. Started wit
 
 Included tools:
 
-- Amazon Corretto
-- capa
-- dnSpy (by dnSpyEx which is a unofficial continuation of the dnSpy project)
-- HxD
-- Ghidra
-- Notepad++
-- PE-bear
-- PEstudio
-- Python
-- SysinternalsSuite
-- Sysmon started with SwiftOnSecurity sysmon-config
-- x64dbg
-- upx
-- Visual Studio Code
-- Zimmerman Tools
-- Selected scripts from Didier Stevens
+- [Amazon Corretto][amc]
+- [capa][cap]
+- [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
+- [exiftool][ext]
+- [HxD][hxd]
+- [Ghidra][ghi]
+- [LOKI][lok]
+- [Notepad++][not]
+- [PE-bear][peb]
+- [PEstudio][pes]
+- [Python[pyt]
+- [ripgrep][rip]
+- [sqlite][sql] cli
+- [SysinternalsSuite][syi]
+- [Sysmon][sym] started with [SwiftOnSecurity sysmon-config][sws]
+- [x64dbg][xdb]
+- [upx][upx]
+- [Visual Studio Code][vsc]
+- [Zimmerman Tools][zim]
+- Selected scripts from [Didier Stevens][dis]
 
 Downloaded but not installed by default:
 
-- Wireshark
-- npcap
+- [Wireshark][wis]
+- [npcap][npc]
 
 ## Installation and configuration
 
@@ -51,6 +55,28 @@ Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **.
 
 - [ ] Would be nice to get Windows Terminal in the sandbox.
 
-
+  [amc]: https://docs.aws.amazon.com/corretto/
+  [cap]: https://github.com/mandiant/capa
+  [dis]: https://github.com/DidierStevens/DidierStevensSuite
+  [dns]: https://github.com/dnSpyEx/dnSpy
+  [ext]: https://exiftool.org/
+  [hxd]: https://mh-nexus.de/
+  [ghi]: https://github.com/NationalSecurityAgency/ghidra
+  [lok]: https://github.com/Neo23x0/Loki
+  [not]: https://notepad-plus-plus.org/
+  [npc]: https://npcap.com/
+  [peb]: https://github.com/hasherezade/pe-bear
+  [pes]: https://www.winitor.com/
+  [pyt]: https://python.org/
+  [rip]: https://github.com/BurntSushi/ripgrep
+  [sql]: https://sqlite.org/
+  [sws]: https://github.com/SwiftOnSecurity/sysmon-config
+  [syi]: https://learn.microsoft.com/en-us/sysinternals/
+  [sym]: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+  [upx]: https://github.com/upx/upx
+  [vsc]: https://code.visualstudio.com/
+  [wis]: https://wireshark.org/
   [wsc]: https://github.com/firefart/sandbox
+  [xdb]: https://x64dbg.com/
+  [zim]: https://github.com/EricZimmerman
 

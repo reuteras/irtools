@@ -35,10 +35,13 @@ Try {
   Download-File -url "https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-win64.zip" -path "$($PSScriptRoot)\..\tools\downloads\upx.zip"
   # Dependence for PE-bear
   Download-File -url "https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" -path "$($PSScriptRoot)\..\tools\downloads\vcredist_x64.exe"
-  Download-File -url "https://github.com/hasherezade/pe-bear-releases/releases/download/0.5.5.7/PE-bear_0.5.5.7_x64_win_vs17.zip" -path "$($PSScriptRoot)\..\tools\downloads\pebear.zip"
+  Download-File -url "https://github.com/hasherezade/pe-bear/releases/download/v0.6.1/PE-bear_0.6.1_x64_win_vs17.zip" -path "$($PSScriptRoot)\..\tools\downloads\pebear.zip"
   Download-File -url "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -path "$($PSScriptRoot)\..\tools\downloads\pestudio.zip"
   Download-File -url "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -path "$($PSScriptRoot)\..\tools\downloads\sysmonconfig-export.xml"
   Download-File -url "https://github.com/mandiant/capa/releases/download/v4.0.1/capa-v4.0.1-windows.zip" -path "$($PSScriptRoot)\..\tools\downloads\capa-windows.zip"
+  Download-File -url "https://exiftool.org/exiftool-12.55.zip" -path "$($PSScriptRoot)\..\tools\downloads\exiftool.zip"
+  Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\tools\downloads\sqlite.zip"
+  Download-File -url "https://github.com/Neo23x0/Loki/releases/download/v0.45.0/loki_0.45.0.zip" -path "$($PSScriptRoot)\..\tools\downloads\loki.zip"
   # Windows Terminal - not working at the moment
   #Download-File -url "https://github.com/microsoft/terminal/releases/download/v1.15.3465.0/Microsoft.WindowsTerminal_Win11_1.15.3466.0_8wekyb3d8bbwe.msixbundle" -path "$($PSScriptRoot)\..\tools\downloads\terminal.msixbundle"
   #Download-File -url "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" -path "$($PSScriptRoot)\..\tools\downloads\VCLibs.appx"
