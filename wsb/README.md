@@ -21,9 +21,11 @@ Included tools:
 - [Sysmon][sym] started with [SwiftOnSecurity sysmon-config][sws]
 - [x64dbg][xdb]
 - [upx][upx]
+- [visidata][vis]
 - [Visual Studio Code][vsc]
 - [Zimmerman Tools][zim]
 - Selected scripts from [Didier Stevens][dis]
+- Selected pip packages for Python
 
 Downloaded but not installed by default:
 
@@ -74,6 +76,7 @@ Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **.
   [syi]: https://learn.microsoft.com/en-us/sysinternals/
   [sym]: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
   [upx]: https://github.com/upx/upx
+  [vis]: https://www.visidata.org/
   [vsc]: https://code.visualstudio.com/
   [wis]: https://wireshark.org/
   [wsc]: https://github.com/firefart/sandbox
