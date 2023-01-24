@@ -87,13 +87,9 @@ REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ad
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontPrettyPath /t REG_DWORD /d 1 /f
 
-# Install Python based tools
-#cd C:\Users\WDAGUtilityAccount\Documents\tools\downloads\pip
-#Get-ChildItem . -Filter wheel* | Foreach-Object { python -m pip install --disable-pip-version-check $_ } > c:\temp\python.txt
-#Get-ChildItem . -Filter *whl | Foreach-Object { python -m pip install --disable-pip-version-check --no-deps $_ } >> c:\temp\python.txt
-#cp -r C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\ c:\temp
-#cd C:\temp\git\threat-intel\tools\one-extract
-#python -m pip install --disable-pip-version-check .
+# Fix names and copy signatures
+mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
+cp -r "%SETUP_PATH%\git\signature-base C:\Tools\loki\loki\signature-base
 
 Write-Output "Change background"
 

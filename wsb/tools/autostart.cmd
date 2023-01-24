@@ -29,9 +29,6 @@ msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\upx.zip" -o"%TOOLS%\upx"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\x64dbg.zip" -o"%TOOLS%\x64dbg"
 
-mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
-cp -r "%SETUP_PATH%\git\signature-base C:\Tools\loki\loki\signature-base
-
 "%TEMP%\vscode.exe" /verysilent /suppressmsgboxes /MERGETASKS="!runcode,desktopicon,quicklaunchicon,addcontextmenufiles,addcontextmenufolders,addtopath"
 "%TEMP%\notepad++.exe" /S
 
