@@ -14,7 +14,7 @@ Included tools:
 - [Notepad++][not]
 - [PE-bear][peb]
 - [PEstudio][pes]
-- [Python[pyt]
+- [Python][pyt]
 - [ripgrep][rip]
 - [sqlite][sql] cli
 - [SysinternalsSuite][syi]
