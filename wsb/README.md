@@ -56,6 +56,7 @@ Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **.
 ## TODO
 
 - [ ] Would be nice to get Windows Terminal in the sandbox.
+- [ ] Fix a good version of peepdf that has been updated to Python3.
 
   [amc]: https://docs.aws.amazon.com/corretto/
   [cap]: https://github.com/mandiant/capa
