@@ -89,7 +89,7 @@ REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ad
 
 # Fix names and copy signatures
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
-cp -r "%SETUP_PATH%\git\signature-base C:\Tools\loki\loki\signature-base
+cp -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base" C:\Tools\loki\loki\signature-base
 
 Write-Output "Change background"
 
