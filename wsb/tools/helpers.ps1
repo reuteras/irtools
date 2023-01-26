@@ -26,7 +26,14 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
     $Shortcut = $WshShell.CreateShortcut($SourceLnk)
     $Shortcut.TargetPath = $DestinationPath
     $Shortcut.Save()
-    }
+}
+
+# Rename folders
+mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
+mv C:\Tools\ghidra_* C:\Tools\ghidra
+mv C:\Tools\ripgrep-* C:\Tools\ripgrep
+mv C:\Tools\sqlite-* C:\Tools\sqlite
+mv C:\Tools\upx-* C:\Tools\upx
 
 Write-Output "Add to PATH"
 
@@ -34,11 +41,11 @@ Add-ToUserPath "C:\Program Files\Notepad++"
 Add-ToUserPath "C:\Tools\capa"
 Add-ToUserPath "C:\Tools\DidierStevens"
 Add-ToUserPath "C:\Tools\exiftool"
-Add-ToUserPath "C:\Tools\loki\loki"
-Add-ToUserPath "C:\Tools\ripgrep\ripgrep-13.0.0-x86_64-pc-windows-msvc"
-Add-ToUserPath "C:\Tools\sqlite\sqlite-tools-win32-x86-3400100"
+Add-ToUserPath "C:\Tools\loki"
+Add-ToUserPath "C:\Tools\ripgrep"
+Add-ToUserPath "C:\Tools\sqlite"
 Add-ToUserPath "C:\Tools\sysinternals"
-Add-ToUserPath "C:\Tools\upx\upx-4.0.1-win64"
+Add-ToUserPath "C:\Tools\upx"
 Add-ToUserPath "C:\Tools\x64dbg\release\x64"
 Add-ToUserPath "C:\Tools\Zimmerman"
 Add-ToUserPath "C:\Tools\Zimmerman\EvtxECmd"
@@ -60,7 +67,7 @@ Write-Output "Add shortcuts"
 REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d 00000000 /f
 
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnSpy.exe"
-Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidra_10.2.2_PUBLIC\ghidraRun.bat"
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\install_python_tools.lnk" "C:\Users\WDAGUtilityAccount\Documents\tools\install_python_tools.ps1"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files\Notepad++\notepad++.exe"
@@ -87,9 +94,11 @@ REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ad
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontPrettyPath /t REG_DWORD /d 1 /f
 
-# Fix names and copy signatures
-mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
-cp -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base" C:\Tools\loki\loki\signature-base
+# Copy signatures
+cp -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base" C:\Tools\loki\signature-base
+
+New-Item -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Force
+Set-ItemProperty -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Name EnableScriptBlockLogging -Value 1 -Force
 
 Write-Output "Change background"
 
