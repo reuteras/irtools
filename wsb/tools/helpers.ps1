@@ -4,7 +4,7 @@ function Add-ToUserPath {
     param (
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [string] 
+        [string]
         $dir
     )
 
@@ -32,9 +32,14 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
+mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
 mv C:\Tools\upx-* C:\Tools\upx
+
+# Remove unused
+rm C:\Tools\GoReSym\GoReSym_lin
+rm C:\Tools\GoReSym\GoReSym_mac
 
 Write-Output "Add to PATH"
 
@@ -43,6 +48,7 @@ Add-ToUserPath "C:\Tools\capa"
 Add-ToUserPath "C:\Tools\DidierStevens"
 Add-ToUserPath "C:\Tools\exiftool"
 Add-ToUserPath "C:\Tools\floss"
+Add-ToUserPath "C:\Tools\GoReSym"
 Add-ToUserPath "C:\Tools\loki"
 Add-ToUserPath "C:\Tools\ripgrep"
 Add-ToUserPath "C:\Tools\sqlite"

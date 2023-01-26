@@ -20,8 +20,9 @@ msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\dnSpy.zip" -o"%TOOLS%\dnSpy"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\exiftool.zip" -o"%TOOLS%\exiftool"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\floss.zip" -o"%TOOLS%\floss"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ghidra.zip" -o"%TOOLS%"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\GoReSym.zip" -o"%TOOLS%\GoReSym"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\hxd.zip" -o"%TOOLS%\hxd"
-"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ghidra.zip" -o"%TOOLS%" 
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\loki.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pebear.zip" -o"%TOOLS%\pebear"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pestudio.zip" -o"%TOOLS%\pestudio"
@@ -35,7 +36,7 @@ msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 "%TEMP%\notepad++.exe" /S
 
 "%TOOLS%\sysinternals\Sysmon64.exe" -accepteula -i "%TEMP%\sysmonconfig-export.xml"
-"%TOOLS%\hxd\HxDSetup.exe" /VERYSILENT /NORESTART 
+"%TOOLS%\hxd\HxDSetup.exe" /VERYSILENT /NORESTART
 
 "%TEMP%\vcredist_x64.exe" /passive /norestart
 "%TEMP%\python3.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0

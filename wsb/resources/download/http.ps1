@@ -58,6 +58,7 @@ Try {
     Download-GitHub -repo "gchq/CyberChef" -path "$($PSScriptRoot)\..\..\tools\downloads\CyberChef.zip"
     Download-GitHub -repo "mandiant/capa" -path "$($PSScriptRoot)\..\..\tools\downloads\capa-windows.zip"
     Download-GitHub -repo "mandiant/flare-floss" -path "$($PSScriptRoot)\..\..\tools\downloads\floss.zip"
+    Download-GitHub -repo "mandiant/GoReSym" -path "$($PSScriptRoot)\..\..\tools\downloads\GoReSym.zip"
     Download-GitHub -repo "NationalSecurityAgency/ghidra" -path "$($PSScriptRoot)\..\..\tools\downloads\ghidra.zip"
     Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\..\tools\downloads\loki.zip"
     Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\..\tools\downloads\notepad++.exe"

@@ -7,19 +7,19 @@
 # WebSite :http://www.c-nergy.be - http://www.c-nergy.be/blog                                      #
 # Version : 2.0                                                                                    #
 # History : 2.0  - Adding functions and parameters to cover more scenario                          #
-#         : 1.0  - Initial Version - Basic Settings                                                #    
-#                                                                                                  #  
+#         : 1.0  - Initial Version - Basic Settings                                                #
+#                                                                                                  #
 # Credits  : Unknown (multipe Internet Sources & References)                                       #
-#                                                                                                  #  
-# Notes : We have been using multiple resources from internet and cope snippets in order to come   #      
+#                                                                                                  #
+# Notes : We have been using multiple resources from internet and cope snippets in order to come   #
 #         with this script...The following link has provided us really good base and info to build #
 #         up the script (https://stackoverflow.com/questions/19989906/ how-to-set-wallpaper-style  #
 #          -fill-stretch-according-to-windows-version).                                            #
 #                                                                                                  #
 # Disclaimer : Script provided AS IS. Use it at your own risk....                                  #
-#              You can use this script and distribute it as long as credits are kept               #  
+#              You can use this script and distribute it as long as credits are kept               #
 #              in place and unchanged                                                              #
-#                                                                                                  #  
+#                                                                                                  #
 #--------------------------------------------------------------------------------------------------#
 
 <#
@@ -40,7 +40,7 @@ Credits/ info from https://stackoverflow.com/questions/19989906/how-to-set-wallp
 #>
 
 # Pass Parameters to the Script
- 
+
 [CmdletBinding()]
 param(
 [Parameter()]
@@ -66,7 +66,7 @@ $Wstyle = @{
 
 $WTile = @{
             'Tiles'     = 1
-            'NoTiles'   = 0                      
+            'NoTiles'   = 0
         }
 
     #Main Code
@@ -96,6 +96,6 @@ Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name wallpaperstyle -Value
 Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name TileWallpaper -Value $WTile[$Tiled]
 
 #Apply the Change on the system
-[Win32.Wallpaper]::SetWallpaper($Path)    
+[Win32.Wallpaper]::SetWallpaper($Path)
 
- 
+

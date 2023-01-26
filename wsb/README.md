@@ -1,6 +1,6 @@
 # Windows Sandbox
 
-A collection of script to install tools for DFIR in Windows Sandbox. Started with the code in this repo [Windows Sandbox Configuration][wsc]. Updated versions and also added more tools and removed some. 
+A collection of script to install tools for DFIR in Windows Sandbox. Started with the code in this repo [Windows Sandbox Configuration][wsc]. Updated versions and also added more tools and removed some.
 
 Included tools:
 
@@ -10,8 +10,9 @@ Included tools:
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
 - [flare-floss][flf]
-- [HxD][hxd]
 - [Ghidra][ghi]
+- [GoReSym[grs]
+- [HxD][hxd]
 - [LOKI][lok]
 - [Notepad++][not]
 - [PE-bear][peb]
@@ -71,8 +72,9 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
   [dns]: https://github.com/dnSpyEx/dnSpy
   [ext]: https://exiftool.org/
   [flf]: https://github.com/mandiant/flare-floss
-  [hxd]: https://mh-nexus.de/
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
+  [ghr]: https://github.com/mandiant/GoReSym
+  [hxd]: https://mh-nexus.de/
   [lok]: https://github.com/Neo23x0/Loki
   [not]: https://notepad-plus-plus.org/
   [npc]: https://npcap.com/
