@@ -1,51 +1,87 @@
 Function Download-File {
-  Param (
-    [string]$url,
-    [string]$path
-  )
+    Param (
+        [string]$url,
+        [string]$path
+    )
 
-  $start_time = Get-Date
-  Write-Output "Downloading $($url)"
-  $wc = New-Object System.Net.WebClient
-  # Used to trick Sourceforge latest endpoints to get the latest x64 windows binary
-  $wc.Headers['User-Agent'] = "Wget x64"
-  Try {
-    $wc.DownloadFile($url, $path)
-  }
-  Catch {
-    throw $_
-  }
-  Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"  
+    $start_time = Get-Date
+    Write-Output "Downloading $($url)"
+    $wc = New-Object System.Net.WebClient
+    # Used to trick Sourceforge latest endpoints to get the latest x64 windows binary
+    $wc.Headers['User-Agent'] = "Wget x64"
+    Try {
+        $wc.DownloadFile($url, $path)
+    }
+    Catch {
+        throw $_
+    }
+    Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"  
+}
+
+Function Download-GitHub {
+    Param (
+        [string]$repo,
+        [string]$path
+    )
+
+    $releases = "https://api.github.com/repos/$repo/releases"
+
+    $start_time = Get-Date
+    $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
+    Write-Output $downloads
+    if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
+        $url = Write-Output $downloads | findstr /R "win64 Installer.x64.exe$ x86_64-pc-windows-msvc" | findstr /R /V "win32"
+    } else {
+        $url = $downloads
+    }
+
+    Write-Output "Downloading $($url)"
+    $wc = New-Object System.Net.WebClient
+    # Used to trick Sourceforge latest endpoints to get the latest x64 windows binary
+    $wc.Headers['User-Agent'] = "Wget x64"
+    Try {
+        $wc.DownloadFile($url, $path)
+    }
+    Catch {
+        throw $_
+    }
+    Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"  
 }
 
 Try {
+}
+Catch {
+    $error[0] | Format-List * -force
+}
+
+Download-GitHub -repo "upx/upx" -path "$($PSScriptRoot)\..\tools\downloads\upx.zip"
+Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\tools\downloads\notepad++.exe"
+Download-GitHub -repo "dnSpyEx/dnSpy" -path "$($PSScriptRoot)\..\tools\downloads\dnSpy.zip"
+Download-GitHub -repo "BurntSushi/ripgrep" -path "$($PSScriptRoot)\..\tools\downloads\ripgrep.zip"
+Download-GitHub -repo "NationalSecurityAgency/ghidra" -path "$($PSScriptRoot)\..\tools\downloads\ghidra.zip"
+Download-GitHub -repo "hasherezade/pe-bear" -path "$($PSScriptRoot)\..\tools\downloads\pebear.zip"
+Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\tools\downloads\loki.zip"
+Download-GitHub -repo "mandiant/capa" -path "$($PSScriptRoot)\..\tools\downloads\capa-windows.zip"
+
+Try {
+    aaaaa
   Download-File -url "https://update.code.visualstudio.com/latest/win32-x64-user/stable" -path "$($PSScriptRoot)\..\tools\downloads\vscode.exe"
-  Download-File -url "https://github.com/dnSpyEx/dnSpy/releases/download/v6.3.0/dnSpy-net-win64.zip" -path "$($PSScriptRoot)\..\tools\downloads\dnSpy.zip"
-  Download-File -url "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-pc-windows-msvc.zip" -path "$($PSScriptRoot)\..\tools\downloads\ripgrep.zip"
+  Download-File -url "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -path "$($PSScriptRoot)\..\tools\downloads\sysmonconfig-export.xml"
   Download-File -url "https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.msi" -path "$($PSScriptRoot)\..\tools\downloads\corretto.msi"
-  Download-File -url "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.8/npp.8.4.8.Installer.x64.exe" -path "$($PSScriptRoot)\..\tools\downloads\notepad++.exe"
-  Download-File -url "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_10.2.2_build/ghidra_10.2.2_PUBLIC_20221115.zip" -path "$($PSScriptRoot)\..\tools\downloads\ghidra.zip"
-  Download-File -url "https://www.7-zip.org/a/7z2201-x64.msi" -path "$($PSScriptRoot)\..\tools\downloads\7zip.msi"
   Download-File -url "https://download.sysinternals.com/files/SysinternalsSuite.zip" -path "$($PSScriptRoot)\..\tools\downloads\sysinternals.zip"
   Download-File -url "https://sourceforge.net/projects/x64dbg/files/latest/download" -path "$($PSScriptRoot)\..\tools\downloads\x64dbg.zip"
+  Download-File -url "https://sourceforge.net/projects/exiftool/files/latest/download" -path "$($PSScriptRoot)\..\tools\downloads\exiftool.zip"
+  Download-File -url "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -path "$($PSScriptRoot)\..\tools\downloads\pestudio.zip"
+  # Update the following when new versions are released
   Download-File -url "https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe" -path "$($PSScriptRoot)\..\tools\downloads\python3.exe"
   Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\tools\downloads\hxd.zip"
   Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\tools\downloads\npcap.exe"
   Download-File -url "https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.3.exe" -path "$($PSScriptRoot)\..\tools\downloads\wireshark.exe"
-  Download-File -url "https://github.com/upx/upx/releases/download/v4.0.1/upx-4.0.1-win64.zip" -path "$($PSScriptRoot)\..\tools\downloads\upx.zip"
+  Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\tools\downloads\sqlite.zip"
+  Download-File -url "https://www.7-zip.org/a/7z2201-x64.msi" -path "$($PSScriptRoot)\..\tools\downloads\7zip.msi"
   # Dependence for PE-bear
   Download-File -url "https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" -path "$($PSScriptRoot)\..\tools\downloads\vcredist_x64.exe"
-  Download-File -url "https://github.com/hasherezade/pe-bear/releases/download/v0.6.1/PE-bear_0.6.1_x64_win_vs17.zip" -path "$($PSScriptRoot)\..\tools\downloads\pebear.zip"
-  Download-File -url "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -path "$($PSScriptRoot)\..\tools\downloads\pestudio.zip"
-  Download-File -url "https://raw.githubusercontent.com/SwiftOnSecurity/sysmon-config/master/sysmonconfig-export.xml" -path "$($PSScriptRoot)\..\tools\downloads\sysmonconfig-export.xml"
-  Download-File -url "https://github.com/mandiant/capa/releases/download/v4.0.1/capa-v4.0.1-windows.zip" -path "$($PSScriptRoot)\..\tools\downloads\capa-windows.zip"
-  Download-File -url "https://exiftool.org/exiftool-12.55.zip" -path "$($PSScriptRoot)\..\tools\downloads\exiftool.zip"
-  Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\tools\downloads\sqlite.zip"
-  Download-File -url "https://github.com/Neo23x0/Loki/releases/download/v0.45.0/loki_0.45.0.zip" -path "$($PSScriptRoot)\..\tools\downloads\loki.zip"
-  # Windows Terminal - not working at the moment
-  #Download-File -url "https://github.com/microsoft/terminal/releases/download/v1.15.3465.0/Microsoft.WindowsTerminal_Win11_1.15.3466.0_8wekyb3d8bbwe.msixbundle" -path "$($PSScriptRoot)\..\tools\downloads\terminal.msixbundle"
-  #Download-File -url "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" -path "$($PSScriptRoot)\..\tools\downloads\VCLibs.appx"
-  #Download-File -url "https://github.com/microsoft/terminal/releases/download/v1.15.3465.0/Microsoft.WindowsTerminal_Win11_1.15.3466.0_8wekyb3d8bbwe.msixbundle_Windows10_PreinstallKit.zip" -path "$($PSScriptRoot)\..\tools\downloads\Microsoft.WindowsTerminal_PreinstallKit.zip"
+  # Background image
   Download-File -url "https://images.contentstack.io/v3/assets/blt36c2e63521272fdc/blt5fe12bc93e60d63e/5fce9c4d752123476ba026d5/DFIR-cityscape.png" -path "$($PSScriptRoot)\..\tools\downloads\sans.png"
 }
 Catch {
