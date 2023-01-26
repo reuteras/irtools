@@ -6,6 +6,7 @@ Included tools:
 
 - [Amazon Corretto][amc]
 - [capa][cap]
+- [CyberChef][cyb]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
 - [HxD][hxd]
@@ -64,6 +65,7 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
 
   [amc]: https://docs.aws.amazon.com/corretto/
   [cap]: https://github.com/mandiant/capa
+  [cyb]: https://github.com/gchq/CyberChef
   [dis]: https://github.com/DidierStevens/DidierStevensSuite
   [dns]: https://github.com/dnSpyEx/dnSpy
   [ext]: https://exiftool.org/

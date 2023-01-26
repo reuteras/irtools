@@ -16,6 +16,7 @@ msiexec /i "%TEMP%\7zip.msi" /qn /norestart
 msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\capa-windows.zip" -o"%TOOLS%\capa"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\CyberChef.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\dnSpy.zip" -o"%TOOLS%\dnSpy"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\exiftool.zip" -o"%TOOLS%\exiftool"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\hxd.zip" -o"%TOOLS%\hxd"

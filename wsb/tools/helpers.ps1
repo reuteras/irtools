@@ -30,6 +30,8 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
 
 # Rename folders
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
+mv C:\Tools\CyberChef_* C:\Tools\CyberChef
+mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
@@ -66,6 +68,7 @@ Write-Output "Add shortcuts"
 
 REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d 00000000 /f
 
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\CyberChef\CyberChef.html"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnSpy.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
