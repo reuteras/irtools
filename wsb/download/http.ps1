@@ -28,7 +28,6 @@ Function Download-GitHub {
 
     $start_time = Get-Date
     $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
-    Write-Output $downloads
     if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
         $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$"
     } else {
@@ -74,9 +73,9 @@ Try {
     Download-File -url "https://sourceforge.net/projects/x64dbg/files/latest/download" -path "$($PSScriptRoot)\..\tools\downloads\x64dbg.zip"
     Download-File -url "https://sourceforge.net/projects/exiftool/files/latest/download" -path "$($PSScriptRoot)\..\tools\downloads\exiftool.zip"
     Download-File -url "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -path "$($PSScriptRoot)\..\tools\downloads\pestudio.zip"
+    Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\tools\downloads\hxd.zip"
     # Update the following when new versions are released
     Download-File -url "https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe" -path "$($PSScriptRoot)\..\tools\downloads\python3.exe"
-    Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\tools\downloads\hxd.zip"
     Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\tools\downloads\npcap.exe"
     Download-File -url "https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.3.exe" -path "$($PSScriptRoot)\..\tools\downloads\wireshark.exe"
     Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\tools\downloads\sqlite.zip"
