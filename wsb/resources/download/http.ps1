@@ -52,15 +52,16 @@ Function Download-GitHub {
 }
 
 Try {
-    Download-GitHub -repo "upx/upx" -path "$($PSScriptRoot)\..\..\tools\downloads\upx.zip"
-    Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\..\tools\downloads\notepad++.exe"
-    Download-GitHub -repo "dnSpyEx/dnSpy" -path "$($PSScriptRoot)\..\..\tools\downloads\dnSpy.zip"
     Download-GitHub -repo "BurntSushi/ripgrep" -path "$($PSScriptRoot)\..\..\tools\downloads\ripgrep.zip"
-    Download-GitHub -repo "NationalSecurityAgency/ghidra" -path "$($PSScriptRoot)\..\..\tools\downloads\ghidra.zip"
+    Download-GitHub -repo "dnSpyEx/dnSpy" -path "$($PSScriptRoot)\..\..\tools\downloads\dnSpy.zip"
     Download-GitHub -repo "hasherezade/pe-bear" -path "$($PSScriptRoot)\..\..\tools\downloads\pebear.zip"
-    Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\..\tools\downloads\loki.zip"
-    Download-GitHub -repo "mandiant/capa" -path "$($PSScriptRoot)\..\..\tools\downloads\capa-windows.zip"
     Download-GitHub -repo "gchq/CyberChef" -path "$($PSScriptRoot)\..\..\tools\downloads\CyberChef.zip"
+    Download-GitHub -repo "mandiant/capa" -path "$($PSScriptRoot)\..\..\tools\downloads\capa-windows.zip"
+    Download-GitHub -repo "mandiant/flare-floss" -path "$($PSScriptRoot)\..\..\tools\downloads\floss.zip"
+    Download-GitHub -repo "NationalSecurityAgency/ghidra" -path "$($PSScriptRoot)\..\..\tools\downloads\ghidra.zip"
+    Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\..\tools\downloads\loki.zip"
+    Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\..\tools\downloads\notepad++.exe"
+    Download-GitHub -repo "upx/upx" -path "$($PSScriptRoot)\..\..\tools\downloads\upx.zip"
 }
 Catch {
     $error[0] | Format-List * -force
