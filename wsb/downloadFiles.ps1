@@ -1,5 +1,5 @@
-./download/didier.ps1
-./download/git.ps1
-./download/http.ps1
-./download/python.ps1
-./download/zimmerman.ps1
+./resources/download/didier.ps1
+./resources/download/git.ps1
+./resources/download/http.ps1
+./resources/download/python.ps1
+./resources/download/zimmerman.ps1
