@@ -51,7 +51,11 @@ You need to have Python 3.10 installed (or change to another version in the Sand
 
 ## Usage
 
-Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **./sandbox_tools_no_network.wsb** in a PowerShell terminal.
+Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **./sandbox_tools_no_network.wsb** in a PowerShell terminal. Installation will take around two minutes and the background will change when its done.
+
+![Screen when installation is done](./resources/images/screen.png)
+
+To install all Python pip packages right click on **install_python_tools.ps1** and select **Run with PowerShell**.
 
 ## TODO
 
