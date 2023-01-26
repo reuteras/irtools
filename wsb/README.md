@@ -9,6 +9,7 @@ Included tools:
 - [CyberChef][cyb]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
+- [flare-floss][flf]
 - [HxD][hxd]
 - [Ghidra][ghi]
 - [LOKI][lok]
@@ -69,6 +70,7 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
   [dis]: https://github.com/DidierStevens/DidierStevensSuite
   [dns]: https://github.com/dnSpyEx/dnSpy
   [ext]: https://exiftool.org/
+  [flf]: https://github.com/mandiant/flare-floss
   [hxd]: https://mh-nexus.de/
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
   [lok]: https://github.com/Neo23x0/Loki
