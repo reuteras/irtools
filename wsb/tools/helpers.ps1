@@ -30,7 +30,6 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
 
 # Rename folders
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
-mv C:\Tools\CyberChef_* C:\Tools\CyberChef
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
