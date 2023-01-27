@@ -6,6 +6,7 @@
   <ProtectedClient>Enable</ProtectedClient>
   <PrinterRedirection>Disable</PrinterRedirection>
   <ClipboardRedirection>Disable</ClipboardRedirection>
+  <MemoryInMB>8192</MemoryInMB>
   <MappedFolders>
     <MappedFolder>
       <HostFolder>__SANDBOX__\tools</HostFolder>
