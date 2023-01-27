@@ -73,7 +73,7 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
   [ext]: https://exiftool.org/
   [flf]: https://github.com/mandiant/flare-floss
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
-  [ghr]: https://github.com/mandiant/GoReSym
+  [grs]: https://github.com/mandiant/GoReSym
   [hxd]: https://mh-nexus.de/
   [lok]: https://github.com/Neo23x0/Loki
   [not]: https://notepad-plus-plus.org/
