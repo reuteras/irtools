@@ -11,7 +11,7 @@ Included tools:
 - [exiftool][ext]
 - [flare-floss][flf]
 - [Ghidra][ghi]
-- [GoReSym[grs]
+- [GoReSym][grs]
 - [HxD][hxd]
 - [LOKI][lok]
 - [Notepad++][not]
