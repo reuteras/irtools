@@ -6,6 +6,7 @@ Included tools:
 
 - [Amazon Corretto][amc]
 - [capa][cap]
+- [chainsaw][cha]
 - [CyberChef][cyb]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
@@ -13,6 +14,7 @@ Included tools:
 - [Ghidra][ghi]
 - [GoReSym][grs]
 - [HxD][hxd]
+- [jq][jq]
 - [LOKI][lok]
 - [Notepad++][not]
 - [PE-bear][peb]
@@ -22,18 +24,28 @@ Included tools:
 - [sqlite][sql] cli
 - [SysinternalsSuite][syi]
 - [Sysmon][sym] started with [SwiftOnSecurity sysmon-config][sws]
+- [TrID][tri]
 - [x64dbg][xdb]
 - [upx][upx]
 - [visidata][vis]
 - [Visual Studio Code][vsc]
+- [yara][yar]
 - [Zimmerman Tools][zim]
-- Selected scripts from [Didier Stevens][dis]
-- Selected pip packages for Python
+- [Selected][sdi] scripts from [Didier Stevens][dis]
+- Selected pip packages for [Python][pip]
 
 Downloaded but not installed by default:
 
 - [Wireshark][wis]
 - [npcap][npc]
+
+Downloaded git repositories:
+
+- https://github.com/keydet89/Events-Ripper.git
+- https://github.com/Neo23x0/evt2sigma.git
+- https://github.com/Neo23x0/signature-base.git
+- https://github.com/SigmaHQ/sigma.git
+- https://github.com/volexity/threat-intel.git
 
 ## Installation and configuration
 
@@ -67,6 +79,7 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
 
   [amc]: https://docs.aws.amazon.com/corretto/
   [cap]: https://github.com/mandiant/capa
+  [cha]: https://github.com/WithSecureLabs/chainsaw
   [cyb]: https://github.com/gchq/CyberChef
   [dis]: https://github.com/DidierStevens/DidierStevensSuite
   [dns]: https://github.com/dnSpyEx/dnSpy
@@ -75,22 +88,27 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
   [grs]: https://github.com/mandiant/GoReSym
   [hxd]: https://mh-nexus.de/
+  [jq]:  https://github.com/stedolan/jq
   [lok]: https://github.com/Neo23x0/Loki
   [not]: https://notepad-plus-plus.org/
   [npc]: https://npcap.com/
   [peb]: https://github.com/hasherezade/pe-bear
   [pes]: https://www.winitor.com/
+  [pip]: ./resources/download/python.ps1
   [pyt]: https://python.org/
   [rip]: https://github.com/BurntSushi/ripgrep
+  [sdi]: ./resources/download/didier.ps1
   [sql]: https://sqlite.org/
   [sws]: https://github.com/SwiftOnSecurity/sysmon-config
   [syi]: https://learn.microsoft.com/en-us/sysinternals/
   [sym]: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+  [tri]: https://mark0.net/soft-trid-e.html
   [upx]: https://github.com/upx/upx
   [vis]: https://www.visidata.org/
   [vsc]: https://code.visualstudio.com/
   [wis]: https://wireshark.org/
   [wsc]: https://github.com/firefart/sandbox
   [xdb]: https://x64dbg.com/
+  [yar]: https://github.com/VirusTotal/yara
   [zim]: https://github.com/EricZimmerman
 
