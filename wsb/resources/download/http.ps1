@@ -29,7 +29,7 @@ Function Download-GitHub {
     $start_time = Get-Date
     $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
     if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
-        $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$"
+        $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$" | findstr /R /V "darwin"
     } else {
         $url = $downloads
     }
@@ -62,7 +62,10 @@ Try {
     Download-GitHub -repo "NationalSecurityAgency/ghidra" -path "$($PSScriptRoot)\..\..\tools\downloads\ghidra.zip"
     Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\..\tools\downloads\loki.zip"
     Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\..\tools\downloads\notepad++.exe"
+    Download-GitHub -repo "stedolan/jq" -path "$($PSScriptRoot)\..\..\tools\downloads\jq.exe"
     Download-GitHub -repo "upx/upx" -path "$($PSScriptRoot)\..\..\tools\downloads\upx.zip"
+    Download-GitHub -repo "WithSecureLabs/chainsaw" -path "$($PSScriptRoot)\..\..\tools\downloads\chainsaw.zip"
+    Download-GitHub -repo "VirusTotal/yara" -path "$($PSScriptRoot)\..\..\tools\downloads\yara.zip"
 }
 Catch {
     $error[0] | Format-List * -force
@@ -77,6 +80,8 @@ Try {
     Download-File -url "https://sourceforge.net/projects/exiftool/files/latest/download" -path "$($PSScriptRoot)\..\..\tools\downloads\exiftool.zip"
     Download-File -url "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\pestudio.zip"
     Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\hxd.zip"
+    Download-File -url "https://mark0.net/download/trid_w32.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\trid.zip"
+    Download-File -url "https://mark0.net/download/triddefs.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\triddefs.zip"
     # Update the following when new versions are released
     Download-File -url "https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\python3.exe"
     Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\npcap.exe"
