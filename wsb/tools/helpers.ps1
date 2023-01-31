@@ -28,7 +28,9 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
     $Shortcut.Save()
 }
 
-# Rename folders
+# Rename folders and files
+mv C:\Temp\yara64.exe C:\Tools\bin\yara.exe
+mv C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
@@ -41,10 +43,24 @@ mv C:\Tools\upx-* C:\Tools\upx
 rm C:\Tools\GoReSym\GoReSym_lin
 rm C:\Tools\GoReSym\GoReSym_mac
 
-Write-Output "Add to PATH"
+# Remove rules specific to Loki and Thor
+rm C:\temp\yararules\generic_anomalies.yar
+rm C:\temp\yararules\general_cloaking.yar
+rm C:\temp\yararules\gen_webshells_ext_vars.yar
+rm C:\temp\yararules\thor_inverse_matches.yar
+rm C:\temp\yararules\yara_mixed_ext_vars.yar
+rm C:\temp\yararules\configured_vulns_ext_vars.yar
 
+# Combine rules to one file
+$content = Get-ChildItem C:\temp\yararules\ | Get-Content -raw
+[IO.File]::WriteAllLines("C:\Tools\signature.yar", $content)
+
+Write-Output "Add to PATH"
+Add-ToUserPath "C:\Program Files\7-Zip"
 Add-ToUserPath "C:\Program Files\Notepad++"
+Add-ToUserPath "C:\Tools\bin"
 Add-ToUserPath "C:\Tools\capa"
+Add-ToUserPath "C:\Tools\chainsaw"
 Add-ToUserPath "C:\Tools\DidierStevens"
 Add-ToUserPath "C:\Tools\exiftool"
 Add-ToUserPath "C:\Tools\floss"

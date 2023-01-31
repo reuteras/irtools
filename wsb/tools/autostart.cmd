@@ -2,13 +2,19 @@ set SETUP_PATH=C:\users\WDAGUtilityAccount\Documents\tools\downloads
 set TEMP=C:\temp
 set TOOLS=C:\Tools
 
+mkdir C:\git
 mkdir C:\temp
+mkdir C:\temp\yararules
 mkdir C:\Tools
+mkdir C:\Tools\bin
 mkdir C:\Tools\DidierStevens
 mkdir C:\Tools\Zimmerman
 
 copy /B /Y /V %SETUP_PATH%\* %TEMP%\
+copy /B %SETUP_PATH%\jq.exe C:\Tools\bin\
 xcopy /S /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
+xcopy /S /E %SETUP_PATH%\git C:\Tools\git
+xcopy /S /E "%SETUP_PATH%\git\signature-base\yara" C:\temp\yararules
 xcopy /S /E %SETUP_PATH%\Zimmerman C:\Tools\Zimmerman
 cp "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk" "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk"
 
@@ -16,6 +22,7 @@ msiexec /i "%TEMP%\7zip.msi" /qn /norestart
 msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\capa-windows.zip" -o"%TOOLS%\capa"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\chainsaw.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\CyberChef.zip" -o"%TOOLS%\CyberChef"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\dnSpy.zip" -o"%TOOLS%\dnSpy"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\exiftool.zip" -o"%TOOLS%\exiftool"
@@ -29,8 +36,11 @@ msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ripgrep.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sqlite.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sysinternals.zip" -o"%TOOLS%\sysinternals"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\trid.zip" -o"%TOOLS%\trid"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\triddefs.zip" -o"%TOOLS%\trid"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\upx.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\x64dbg.zip" -o"%TOOLS%\x64dbg"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\yara.zip" -o"%TEMP%"
 
 "%TEMP%\vscode.exe" /verysilent /suppressmsgboxes /MERGETASKS="!runcode,desktopicon,quicklaunchicon,addcontextmenufiles,addcontextmenufolders,addtopath"
 "%TEMP%\notepad++.exe" /S
