@@ -15,6 +15,7 @@ pip2pi ./tools/downloads/pip `
     extract-msg `
     fonttools `
     hachoir `
+    LnkParse3 `
     lxml `
     minidump `
     msgpack `
