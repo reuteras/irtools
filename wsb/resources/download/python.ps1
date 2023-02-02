@@ -1,7 +1,14 @@
 # Download Python pip
 
-python3 -m venv .wsb
-./.wsb/Scripts/Activate.ps1
+$VENV = "$env:HOMEDRIVE$env:HOMEPATH/.wsb"
+
+if (Test-Path -Path $VENV) {
+    "Path $VENV exists!"
+    Exit
+}
+
+python3 -m venv "$VENV"
+& "$VENV/Scripts/Activate.ps1"
 
 python -m pip install -U pip
 python -m pip install pip2pi
@@ -43,7 +50,7 @@ pip2pi ./tools/downloads/pip `
     xlrd `
     XLMMacroDeobfuscator `
     yara-python `
-    wheel
+    wheel 2>&1 | findstr /V "ERROR linking"
 
 deactivate
-rm -r .wsb
+rm -r "$VENV"
