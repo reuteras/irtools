@@ -8,6 +8,7 @@ Included tools:
 - [capa][cap]
 - [chainsaw][cha]
 - [CyberChef][cyb]
+- [DensityScout][den]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
 - [flare-floss][flf]
@@ -81,6 +82,7 @@ To install all Python pip packages right click on **install_python_tools.ps1** a
   [cap]: https://github.com/mandiant/capa
   [cha]: https://github.com/WithSecureLabs/chainsaw
   [cyb]: https://github.com/gchq/CyberChef
+  [den]: https://cert.at/en/downloads/software/software-densityscout 
   [dis]: https://github.com/DidierStevens/DidierStevensSuite
   [dns]: https://github.com/dnSpyEx/dnSpy
   [ext]: https://exiftool.org/
