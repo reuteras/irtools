@@ -88,6 +88,7 @@ Try {
     Download-File -url "https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.3.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\wireshark.exe"
     Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\sqlite.zip"
     Download-File -url "https://www.7-zip.org/a/7z2201-x64.msi" -path "$($PSScriptRoot)\..\..\tools\downloads\7zip.msi"
+    Download-File -url "https://cert.at/media/files/downloads/software/densityscout/files/densityscout_build_45_windows.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\DensityScout.zip"
     # Dependence for PE-bear
     Download-File -url "https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\vcredist_x64.exe"
     # Background image

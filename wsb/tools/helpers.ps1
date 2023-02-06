@@ -29,6 +29,7 @@ param ( [string]$SourceLnk, [string]$DestinationPath )
 }
 
 # Rename folders and files
+mv C:\Temp\win64\densityscout.exe C:\Tools\bin\densityscout.exe
 mv C:\Temp\yara64.exe C:\Tools\bin\yara.exe
 mv C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
@@ -39,9 +40,12 @@ mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
 mv C:\Tools\upx-* C:\Tools\upx
 
+
 # Remove unused
 rm C:\Tools\GoReSym\GoReSym_lin
 rm C:\Tools\GoReSym\GoReSym_mac
+rm -r C:\Temp\win32
+rm -r C:\Temp\win64
 
 # Remove rules specific to Loki and Thor
 rm C:\temp\yararules\generic_anomalies.yar
