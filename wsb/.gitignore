@@ -1,5 +1,4 @@
 readonly/*
 readwrite/*
-sandbox_clean_no_network.wsb
-sandbox_tools_no_network.wsb
+*.wsb
 tools/downloads
