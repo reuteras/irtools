@@ -83,7 +83,7 @@ Try {
     Download-File -url "https://mark0.net/download/trid_w32.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\trid.zip"
     Download-File -url "https://mark0.net/download/triddefs.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\triddefs.zip"
     # Update the following when new versions are released
-    Download-File -url "https://www.python.org/ftp/python/3.10.9/python-3.10.9-amd64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\python3.exe"
+    Download-File -url "https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\python3.exe"
     Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\npcap.exe"
     Download-File -url "https://1.eu.dl.wireshark.org/win64/Wireshark-win64-4.0.3.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\wireshark.exe"
     Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\sqlite.zip"
