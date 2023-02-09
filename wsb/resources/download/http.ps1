@@ -1,3 +1,5 @@
+Write-Host "Download HTTP and releases from GitHub."
+
 Function Download-File {
     Param (
         [string]$url,

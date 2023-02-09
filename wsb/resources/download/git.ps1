@@ -1,6 +1,6 @@
-# Download git repositories
+Write-Host "Download git repositories"
 
-New-Item -ItemType Directory -Force -Path tools\downloads\git
+New-Item -ItemType Directory -Force -Path tools\downloads\git > $null
 cd tools\downloads\git
 
 $repourls = `

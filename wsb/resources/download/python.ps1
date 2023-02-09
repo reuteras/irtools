@@ -1,4 +1,4 @@
-# Download Python pip
+Write-Host "Download Python pip packages."
 
 $VENV = "$env:HOMEDRIVE$env:HOMEPATH/.wsb"
 
@@ -12,6 +12,10 @@ python3 -m venv "$VENV"
 
 python -m pip install -U pip
 python -m pip install pip2pi
+
+if (Test-Path -Path ./tools/downloads/pip ) {
+    rm -r ./tools/downloads/pip
+}
 
 pip2pi ./tools/downloads/pip `
     chepy[extras] `
