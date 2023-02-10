@@ -100,7 +100,6 @@ Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\Cyber
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnSpy.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
-Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\install_python_tools.lnk" "C:\Users\WDAGUtilityAccount\Documents\tools\install_python_tools.ps1"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files\Notepad++\notepad++.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PE-bear.lnk" "C:\Tools\pebear\PE-bear.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\pestudio.lnk" "C:\Tools\pestudio\pestudio\pestudio.exe"
@@ -136,5 +135,12 @@ Write-Output "Change background"
 PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\Update-Wallpaper.ps1 C:\temp\sans.png
 $shell = New-Object -ComObject "Shell.Application"
 $shell.sendkeys('{F5}')
+
+PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\install_python_tools.ps1
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+
+cp "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+cp "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
 
 Write-Output "helpers.ps1 done."

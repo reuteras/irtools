@@ -9,6 +9,7 @@ mkdir C:\Tools
 mkdir C:\Tools\bin
 mkdir C:\Tools\DidierStevens
 mkdir C:\Tools\Zimmerman
+mkdir C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell
 
 copy /B /Y /V %SETUP_PATH%\* %TEMP%\
 copy /B %SETUP_PATH%\jq.exe C:\Tools\bin\
