@@ -1,8 +1,8 @@
 # Windows Sandbox
 
-A collection of script to install tools for DFIR in Windows Sandbox. Started with the code in this repo [Windows Sandbox Configuration][wsc]. Updated versions and also added more tools and removed some.
+This repository contains a collection of scripts to install tools for DFIR work in a Windows Sandbox. This started with the code in [Windows Sandbox Configuration][wsc]. Tools has been updated, added and removed.
 
-Included tools:
+Tools included:
 
 - [Amazon Corretto][amc]
 - [capa][cap]
@@ -50,18 +50,18 @@ Downloaded git repositories:
 
 ## Installation and configuration
 
-First enable Windows Sandbox by running **Add and remove Windows features**.
+First enable Windows Sandbox by running **Add and remove Windows features** and adding Windows Sandbox.
 
 Then start a PowerShell terminal and download the code.
 
 	git clone https:/github.com/reuteras/irtools.git
 	cd irtools/wsb
 
-Create configuration with local path by running.
+Create configuration with your local path by running.
 
 	./createSandboxConfig.ps1
 
-You need to have Python 3.10 installed (or change to another version in the Sandbox by modifying the scripts).
+You need to have Python 3.10 installed (or change to another version in the Sandbox by modifying the scripts) and then download all binaries and scripts with the help of the following command.
 
 	./downloadFiles.ps1
 
@@ -71,12 +71,11 @@ Start the Sandbox by clicking on **sandbox_tools_no_network.wsb** or running **.
 
 ![Screen when installation is done](./resources/images/screen.png)
 
-To install all Python pip packages right click on **install_python_tools.ps1** and select **Run with PowerShell**.
+Python pip packages will be installed in the background and that installation is done when there is a _README.md_ file on the Desktop.
 
 ## TODO
 
 - [ ] Would be nice to get Windows Terminal in the sandbox.
-- [ ] Fix a good version of peepdf that has been updated to Python3.
 
   [amc]: https://docs.aws.amazon.com/corretto/
   [cap]: https://github.com/mandiant/capa
