@@ -84,6 +84,7 @@ Try {
     Download-File -url "https://mh-nexus.de/downloads/HxDSetup.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\hxd.zip"
     Download-File -url "https://mark0.net/download/trid_w32.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\trid.zip"
     Download-File -url "https://mark0.net/download/triddefs.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\triddefs.zip"
+    Download-File -url "https://malcat.fr/latest/malcat_win64_lite.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\malcat.zip"
     # Update the following when new versions are released
     Download-File -url "https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\python3.exe"
     Download-File -url "https://npcap.com/dist/npcap-1.72.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\npcap.exe"
