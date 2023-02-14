@@ -35,6 +35,7 @@ msiexec /i "%TEMP%\corretto.msi" /qn /norestart
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\malcat.zip" -o"%TOOLS%\malcat"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pebear.zip" -o"%TOOLS%\pebear"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pestudio.zip" -o"%TOOLS%\pestudio"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\qpdf.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ripgrep.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sqlite.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sysinternals.zip" -o"%TOOLS%\sysinternals"

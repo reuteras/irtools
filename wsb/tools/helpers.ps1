@@ -36,6 +36,7 @@ mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
+mv C:\Tools\qpdf-* C:\Tools\qpdf
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
 mv C:\Tools\upx-* C:\Tools\upx
@@ -72,6 +73,7 @@ Add-ToUserPath "C:\Tools\floss"
 Add-ToUserPath "C:\Tools\GoReSym"
 Add-ToUserPath "C:\Tools\loki"
 Add-ToUserPath "C:\Tools\malcat\bin"
+Add-ToUserPath "C:\Tools\qpdf\bin"
 Add-ToUserPath "C:\Tools\ripgrep"
 Add-ToUserPath "C:\Tools\sqlite"
 Add-ToUserPath "C:\Tools\sysinternals"

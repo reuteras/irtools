@@ -22,6 +22,7 @@ Tools included:
 - [PE-bear][peb]
 - [PEstudio][pes]
 - [Python][pyt]
+- [qpdf][qpd]
 - [ripgrep][rip]
 - [sqlite][sql] cli
 - [SysinternalsSuite][syi]
@@ -99,6 +100,7 @@ Python pip packages will be installed in the background and that installation is
   [pes]: https://www.winitor.com/
   [pip]: ./resources/download/python.ps1
   [pyt]: https://python.org/
+  [qpd]: https://github.com/qpdf/qpdf
   [rip]: https://github.com/BurntSushi/ripgrep
   [sdi]: ./resources/download/didier.ps1
   [sql]: https://sqlite.org/
