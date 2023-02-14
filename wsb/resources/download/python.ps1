@@ -44,6 +44,7 @@ pip2pi ./tools/downloads/pip `
     ppdeep `
     pycryptodome `
     pyelftools `
+    pyOneNote `
     pypng `
     python-magic-bin `
     pyzipper `
