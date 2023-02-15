@@ -8,6 +8,7 @@ Tools included:
 - [capa][cap]
 - [chainsaw][cha]
 - [cmder][cer]
+- [Cutter][cut]
 - [CyberChef][cyb]
 - [DensityScout][den]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
@@ -84,6 +85,7 @@ Python pip packages will be installed in the background and that installation is
   [cap]: https://github.com/mandiant/capa
   [cer]: https://github.com/cmderdev/cmder
   [cha]: https://github.com/WithSecureLabs/chainsaw
+  [cut]: https://github.com/rizinorg/cutter
   [cyb]: https://github.com/gchq/CyberChef
   [den]: https://cert.at/en/downloads/software/software-densityscout 
   [dis]: https://github.com/DidierStevens/DidierStevensSuite

@@ -36,6 +36,7 @@ mv C:\Temp\win64\densityscout.exe C:\Tools\bin\densityscout.exe
 mv C:\Temp\yara64.exe C:\Tools\bin\yara.exe
 mv C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
+mv C:\Tools\cutter-* C:\Tools\cutter
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
@@ -106,6 +107,7 @@ REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t
 
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\CyberChef\CyberChef.html"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\cmder.lnk" "C:\Tools\cmder\cmder.exe" "C:\Users\WDAGUtilityAccount\Desktop"
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Cutter.lnk" "C:\Tools\cutter\cutter.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnSpy.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"

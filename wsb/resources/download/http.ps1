@@ -31,7 +31,7 @@ Function Download-GitHub {
     $start_time = Get-Date
     $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
     if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
-        $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$ qpdf cmder.7z" | findstr /R /V "darwin"
+        $url = Write-Output $downloads | findstr /R "win Windows Installer.x64.exe$ qpdf cmder.7z" | findstr /R /V "darwin"
     } else {
         $url = $downloads
     }
@@ -66,6 +66,7 @@ Try {
     Download-GitHub -repo "Neo23x0/Loki" -path "$($PSScriptRoot)\..\..\tools\downloads\loki.zip"
     Download-GitHub -repo "notepad-plus-plus/notepad-plus-plus" -path "$($PSScriptRoot)\..\..\tools\downloads\notepad++.exe"
     Download-GitHub -repo "qpdf/qpdf" -path "$($PSScriptRoot)\..\..\tools\downloads\qpdf.zip"
+    Download-GitHub -repo "rizinorg/cutter" -path "$($PSScriptRoot)\..\..\tools\downloads\cutter.zip"
     Download-GitHub -repo "stedolan/jq" -path "$($PSScriptRoot)\..\..\tools\downloads\jq.exe"
     Download-GitHub -repo "upx/upx" -path "$($PSScriptRoot)\..\..\tools\downloads\upx.zip"
     Download-GitHub -repo "WithSecureLabs/chainsaw" -path "$($PSScriptRoot)\..\..\tools\downloads\chainsaw.zip"
