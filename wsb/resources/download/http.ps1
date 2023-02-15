@@ -31,7 +31,7 @@ Function Download-GitHub {
     $start_time = Get-Date
     $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
     if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
-        $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$ qpdf" | findstr /R /V "darwin"
+        $url = Write-Output $downloads | findstr /R "win Installer.x64.exe$ qpdf cmder.7z" | findstr /R /V "darwin"
     } else {
         $url = $downloads
     }
@@ -55,6 +55,7 @@ Function Download-GitHub {
 
 Try {
     Download-GitHub -repo "BurntSushi/ripgrep" -path "$($PSScriptRoot)\..\..\tools\downloads\ripgrep.zip"
+    Download-GitHub -repo "cmderdev/cmder" -path "$($PSScriptRoot)\..\..\tools\downloads\cmder.7z"
     Download-GitHub -repo "dnSpyEx/dnSpy" -path "$($PSScriptRoot)\..\..\tools\downloads\dnSpy.zip"
     Download-GitHub -repo "hasherezade/pe-bear" -path "$($PSScriptRoot)\..\..\tools\downloads\pebear.zip"
     Download-GitHub -repo "gchq/CyberChef" -path "$($PSScriptRoot)\..\..\tools\downloads\CyberChef.zip"

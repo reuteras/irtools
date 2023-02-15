@@ -21,9 +21,12 @@ function Add-ToUserPath {
 }
 
 function Set-Shortcut {
-param ( [string]$SourceLnk, [string]$DestinationPath )
+param ( [string]$SourceLnk, [string]$DestinationPath , [string]$WorkingDirectory)
     $WshShell = New-Object -comObject WScript.Shell
     $Shortcut = $WshShell.CreateShortcut($SourceLnk)
+    if ($WorkingDirectory -ne $Null) {
+        $Shortcut.WorkingDirectory = $WorkingDirectory
+    }
     $Shortcut.TargetPath = $DestinationPath
     $Shortcut.Save()
 }
@@ -67,6 +70,8 @@ Add-ToUserPath "C:\Program Files\Notepad++"
 Add-ToUserPath "C:\Tools\bin"
 Add-ToUserPath "C:\Tools\capa"
 Add-ToUserPath "C:\Tools\chainsaw"
+Add-ToUserPath "C:\Tools\cmder"
+Add-ToUserPath "C:\Tools\cmder\bin"
 Add-ToUserPath "C:\Tools\DidierStevens"
 Add-ToUserPath "C:\Tools\exiftool"
 Add-ToUserPath "C:\Tools\floss"
@@ -100,6 +105,7 @@ Write-Output "Add shortcuts"
 REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d 00000000 /f
 
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\CyberChef\CyberChef.html"
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\cmder.lnk" "C:\Tools\cmder\cmder.exe" "C:\Users\WDAGUtilityAccount\Desktop"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnSpy.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
@@ -133,6 +139,9 @@ cp -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base"
 
 New-Item -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Force
 Set-ItemProperty -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Name EnableScriptBlockLogging -Value 1 -Force
+
+# Add cmder integration
+C:\Tools\cmder\cmder.exe /REGISTER ALL
 
 Write-Output "Change background"
 

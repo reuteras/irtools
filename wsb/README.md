@@ -7,6 +7,7 @@ Tools included:
 - [Amazon Corretto][amc]
 - [capa][cap]
 - [chainsaw][cha]
+- [cmder][cer]
 - [CyberChef][cyb]
 - [DensityScout][den]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
@@ -81,6 +82,7 @@ Python pip packages will be installed in the background and that installation is
 
   [amc]: https://docs.aws.amazon.com/corretto/
   [cap]: https://github.com/mandiant/capa
+  [cer]: https://github.com/cmderdev/cmder
   [cha]: https://github.com/WithSecureLabs/chainsaw
   [cyb]: https://github.com/gchq/CyberChef
   [den]: https://cert.at/en/downloads/software/software-densityscout 
