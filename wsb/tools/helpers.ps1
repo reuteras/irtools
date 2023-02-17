@@ -1,5 +1,6 @@
 Write-Output "Start helpers.ps1"
 
+# Declare helper functions
 function Add-ToUserPath {
     param (
         [Parameter(Mandatory=$true)]
@@ -31,6 +32,13 @@ param ( [string]$SourceLnk, [string]$DestinationPath , [string]$WorkingDirectory
     $Shortcut.Save()
 }
 
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sShortDate -value "yyyy-MM-dd"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sLongDate -value "yyyy-MMMM-dddd"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sShortTime -value "HH:mm"
+Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sTimeFormat -value "HH:mm:ss"
+
 # Rename folders and files
 mv C:\Temp\win64\densityscout.exe C:\Tools\bin\densityscout.exe
 mv C:\Temp\yara64.exe C:\Tools\bin\yara.exe
@@ -44,7 +52,6 @@ mv C:\Tools\qpdf-* C:\Tools\qpdf
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
 mv C:\Tools\upx-* C:\Tools\upx
-
 
 # Remove unused
 rm C:\Tools\GoReSym\GoReSym_lin
@@ -101,10 +108,8 @@ Add-ToUserPath "C:\Tools\Zimmerman\SQLECmd"
 Add-ToUserPath "C:\Tools\Zimmerman\TimelineExplorer"
 Add-ToUserPath "C:\Tools\Zimmerman\XWFIM"
 
-Write-Output "Add shortcuts"
-
+Write-Output "Add shortcuts (shorten link names first)"
 REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d 00000000 /f
-
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\CyberChef\CyberChef.html"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\cmder.lnk" "C:\Tools\cmder\cmder.exe" "C:\Users\WDAGUtilityAccount\Desktop"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Cutter.lnk" "C:\Tools\cutter\cutter.exe"
@@ -119,8 +124,7 @@ Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk" "C:\Windows\sy
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Tools.lnk" "C:\Tools"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\x64dbg.lnk" "C:\Tools\x64dbg\release\x64\x64dbg.exe"
 
-Write-Output "Show file extensions"
-
+Write-Output "Hide file extensions"
 REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
 REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\HideFileExt /v DefaultValue /t REG_DWORD /d 0 /f
 REG ADD HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\Folder\Hidden\SHOWALL /v DefaultValue /t REG_DWORD /d 1 /f
@@ -145,17 +149,22 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\Pow
 # Add cmder integration
 C:\Tools\cmder\cmder.exe /REGISTER ALL
 
-Write-Output "Change background"
-
-PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\Update-Wallpaper.ps1 C:\temp\sans.png
+Write-Output "Change background to python"
+PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\Update-Wallpaper.ps1 C:\Users\WDAGUtilityAccount\Documents\tools\downloads\python.png
 $shell = New-Object -ComObject "Shell.Application"
 $shell.sendkeys('{F5}')
 
+Stop-Process -ProcessName Explorer -Force
+
+# Install Python pip packages
 PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\install_python_tools.ps1
 
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
-
+# Configure usage of new venv for cmder and PowerShell
+Write-Output "C:\venv\scripts\activate.bat" | Out-File -Append -Encoding "ascii" C:\Tools\cmder\config\user_profile.cmd
 cp "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-cp "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
 
+# Signal that everything is done.
+cp "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
+PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\Update-Wallpaper.ps1 C:\temp\sans.jpg
+C:\Tools\sysinternals\Bginfo64.exe /NOLICPROMPT /timer:0 C:\Users\WDAGUtilityAccount\Documents\tools\config.bgi
 Write-Output "helpers.ps1 done."
