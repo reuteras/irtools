@@ -20,7 +20,7 @@ rem Copy files
 copy /B /Y /V %SETUP_PATH%\* %TEMP%\
 copy /B %SETUP_PATH%\jq.exe C:\Tools\bin\
 xcopy /S /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
-xcopy /S /E %SETUP_PATH%\git C:\git
+xcopy /S /E %SETUP_PATH%\git C:\git /EXCLUDE \.git\
 xcopy /S /E "%SETUP_PATH%\git\signature-base\yara" C:\temp\yararules
 xcopy /S /E %SETUP_PATH%\Zimmerman C:\Tools\Zimmerman
 cp "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk" "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk"
