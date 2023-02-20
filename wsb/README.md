@@ -13,6 +13,7 @@ Tools included:
 - [DensityScout][den]
 - [dnSpy][dns] (by dnSpyEx which is a unofficial continuation of the dnSpy project)
 - [exiftool][ext]
+- [flare-fakenet-ng][ffn]
 - [flare-floss][flf]
 - [Ghidra][ghi]
 - [GoReSym][grs]
@@ -93,6 +94,7 @@ Python pip packages will be installed in the background and that installation is
   [dis]: https://github.com/DidierStevens/DidierStevensSuite
   [dns]: https://github.com/dnSpyEx/dnSpy
   [ext]: https://exiftool.org/
+  [ffn]: https://github.com/mandiant/flare-fakenet-ng
   [flf]: https://github.com/mandiant/flare-floss
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
   [grs]: https://github.com/mandiant/GoReSym

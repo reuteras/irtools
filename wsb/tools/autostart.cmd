@@ -40,6 +40,7 @@ rem Unzip
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\CyberChef.zip" -o"%TOOLS%\CyberChef"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\dnSpy.zip" -o"%TOOLS%\dnSpy"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\exiftool.zip" -o"%TOOLS%\exiftool"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\fakenet.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\floss.zip" -o"%TOOLS%\floss"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ghidra.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\GoReSym.zip" -o"%TOOLS%\GoReSym"

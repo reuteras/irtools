@@ -46,6 +46,7 @@ mv C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
 mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
 mv C:\Tools\cutter-* C:\Tools\cutter
 mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
+mv C:\Tools\fakenet* C:\Tools\fakenet
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
 mv C:\Tools\qpdf-* C:\Tools\qpdf
@@ -82,6 +83,7 @@ Add-ToUserPath "C:\Tools\cmder"
 Add-ToUserPath "C:\Tools\cmder\bin"
 Add-ToUserPath "C:\Tools\DidierStevens"
 Add-ToUserPath "C:\Tools\exiftool"
+Add-ToUserPath "C:\Tools\fakenet"
 Add-ToUserPath "C:\Tools\floss"
 Add-ToUserPath "C:\Tools\GoReSym"
 Add-ToUserPath "C:\Tools\loki"
