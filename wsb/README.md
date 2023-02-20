@@ -20,6 +20,7 @@ Tools included:
 - [jq][jq]
 - [LOKI][lok]
 - [Malcat][mal]
+- [ncat][nca]
 - [Notepad++][not]
 - [PE-bear][peb]
 - [PEstudio][pes]
@@ -99,6 +100,7 @@ Python pip packages will be installed in the background and that installation is
   [jq]:  https://github.com/stedolan/jq
   [lok]: https://github.com/Neo23x0/Loki
   [mal]: https://malcat.fr/
+  [nca]: https://nmap.org/ncat/
   [not]: https://notepad-plus-plus.org/
   [npc]: https://npcap.com/
   [peb]: https://github.com/hasherezade/pe-bear

@@ -46,6 +46,7 @@ rem Unzip
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\hxd.zip" -o"%TOOLS%\hxd"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\loki.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\malcat.zip" -o"%TOOLS%\malcat"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\nmap.exe" -o"%TOOLS%\nmap"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pebear.zip" -o"%TOOLS%\pebear"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pestudio.zip" -o"%TOOLS%\pestudio"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\qpdf.zip" -o"%TOOLS%"
@@ -79,6 +80,7 @@ rem Install packages
 "%TEMP%\notepad++.exe" /S
 "%TOOLS%\hxd\HxDSetup.exe" /VERYSILENT /NORESTART
 "%TEMP%\vcredist_x64.exe" /passive /norestart
+"%TEMP%\vcredist_16_x64.exe" /passive /norestart
 "%TEMP%\python3.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 
 rem https://www.wireshark.org/docs/wsug_html_chunked/ChBuildInstallWinInstall.html

@@ -96,8 +96,11 @@ Try {
     Download-File -url "https://sqlite.org/2022/sqlite-tools-win32-x86-3400100.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\sqlite.zip"
     Download-File -url "https://www.7-zip.org/a/7z2201-x64.msi" -path "$($PSScriptRoot)\..\..\tools\downloads\7zip.msi"
     Download-File -url "https://cert.at/media/files/downloads/software/densityscout/files/densityscout_build_45_windows.zip" -path "$($PSScriptRoot)\..\..\tools\downloads\DensityScout.zip"
+    Download-File -url "https://nmap.org/dist/nmap-7.93-setup.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\nmap.exe"
     # Dependence for PE-bear
     Download-File -url "https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\vcredist_x64.exe"
+    # Dependence for ncat
+    Download-File -url "https://aka.ms/vs/16/release/vc_redist.x86.exe" -path "$($PSScriptRoot)\..\..\tools\downloads\vcredist_16_x64.exe"
     # Background image
     Download-File -url "https://images.contentstack.io/v3/assets/blt36c2e63521272fdc/blt5fe12bc93e60d63e/5fce9c4d752123476ba026d5/DFIR-cityscape.png" -path "$($PSScriptRoot)\..\..\tools\downloads\sans.png"
 }
