@@ -26,6 +26,7 @@ Tools included:
 - [Python][pyt]
 - [qpdf][qpd]
 - [ripgrep][rip]
+- [scdbg][scd]
 - [sqlite][sql] cli
 - [SysinternalsSuite][syi]
 - [Sysmon][sym] started with [SwiftOnSecurity sysmon-config][sws]
@@ -106,6 +107,7 @@ Python pip packages will be installed in the background and that installation is
   [pyt]: https://python.org/
   [qpd]: https://github.com/qpdf/qpdf
   [rip]: https://github.com/BurntSushi/ripgrep
+  [scd]: https://github.com/dzzie/VS_LIBEMU
   [sdi]: ./resources/download/didier.ps1
   [sql]: https://sqlite.org/
   [sws]: https://github.com/SwiftOnSecurity/sysmon-config

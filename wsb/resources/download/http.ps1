@@ -31,13 +31,13 @@ Function Download-GitHub {
     $start_time = Get-Date
     $downloads = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].assets.browser_download_url
     if ( ( Write-Output $downloads | Measure-Object -word ).Words -gt 1 ) {
-        $url = Write-Output $downloads | findstr /R "win Windows Installer.x64.exe$ qpdf cmder.7z" | findstr /R /V "darwin"
+        $url = Write-Output $downloads | findstr /R "win Windows Installer.x64.exe$ qpdf cmder.7z VS_LIBEMU" | findstr /R /V "darwin"
     } else {
         $url = $downloads
     }
 
     if ( ( Write-Output $url | Measure-Object -word ).Words -gt 1 ) {
-        $url = Write-Output $url | findstr /R "msvc64.zip win64 Installer.x64.exe$ x86_64-pc-windows-msvc x64_win_vs17" | findstr /R /V "win32"
+        $url = Write-Output $url | findstr /R "msvc64.zip win64 Installer.x64.exe$ x86_64-pc-windows-msvc x64_win_vs17 VS_LIBEMU" | findstr /R /V "win32"
     }
 
     Write-Output "Downloading $($url)"
@@ -57,6 +57,7 @@ Try {
     Download-GitHub -repo "BurntSushi/ripgrep" -path "$($PSScriptRoot)\..\..\tools\downloads\ripgrep.zip"
     Download-GitHub -repo "cmderdev/cmder" -path "$($PSScriptRoot)\..\..\tools\downloads\cmder.7z"
     Download-GitHub -repo "dnSpyEx/dnSpy" -path "$($PSScriptRoot)\..\..\tools\downloads\dnSpy.zip"
+    Download-GitHub -repo "dzzie/VS_LIBEMU" -path "$($PSScriptRoot)\..\..\tools\downloads\scdbg.zip"
     Download-GitHub -repo "hasherezade/pe-bear" -path "$($PSScriptRoot)\..\..\tools\downloads\pebear.zip"
     Download-GitHub -repo "gchq/CyberChef" -path "$($PSScriptRoot)\..\..\tools\downloads\CyberChef.zip"
     Download-GitHub -repo "mandiant/capa" -path "$($PSScriptRoot)\..\..\tools\downloads\capa-windows.zip"
