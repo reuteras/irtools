@@ -18,6 +18,8 @@ if (Test-Path -Path ./tools/downloads/pip ) {
 }
 
 pip2pi ./tools/downloads/pip `
+    acefile `
+    binwalk `
     chepy[extras] `
     colorama `
     dnslib `
@@ -29,6 +31,7 @@ pip2pi ./tools/downloads/pip `
     LnkParse3 `
     lxml `
     minidump `
+    mkyara `
     msgpack `
     msoffcrypto-tool `
     name-that-hash `
@@ -51,6 +54,8 @@ pip2pi ./tools/downloads/pip `
     python-magic `
     setuptools `
     time-decode `
+    uncompyle6 `
+    unpy2exe `
     visidata `
     xlrd `
     XLMMacroDeobfuscator `
