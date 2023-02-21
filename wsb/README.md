@@ -110,6 +110,7 @@ Python pip packages will be installed in the background and that installation is
   [pip]: ./resources/download/python.ps1
   [pyt]: https://python.org/
   [qpd]: https://github.com/qpdf/qpdf
+  [rad]: https://github.com/radareorg/radare2
   [rip]: https://github.com/BurntSushi/ripgrep
   [scd]: https://github.com/dzzie/VS_LIBEMU
   [sdi]: ./resources/download/didier.ps1

@@ -50,6 +50,7 @@ mv C:\Tools\fakenet* C:\Tools\fakenet
 mv C:\Tools\ghidra_* C:\Tools\ghidra
 mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
 mv C:\Tools\qpdf-* C:\Tools\qpdf
+mv C:\Tools\radare2-* C:\Tools\radare2
 mv C:\Tools\ripgrep-* C:\Tools\ripgrep
 mv C:\Tools\sqlite-* C:\Tools\sqlite
 mv C:\Tools\upx-* C:\Tools\upx
@@ -90,6 +91,7 @@ Add-ToUserPath "C:\Tools\loki"
 Add-ToUserPath "C:\Tools\malcat\bin"
 Add-ToUserPath "C:\Tools\nmap"
 Add-ToUserPath "C:\Tools\qpdf\bin"
+Add-ToUserPath "C:\Tools\radare2"
 Add-ToUserPath "C:\Tools\ripgrep"
 Add-ToUserPath "C:\Tools\scdbg"
 Add-ToUserPath "C:\Tools\sqlite"

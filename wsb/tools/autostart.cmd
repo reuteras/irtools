@@ -51,6 +51,7 @@ rem Unzip
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pebear.zip" -o"%TOOLS%\pebear"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\pestudio.zip" -o"%TOOLS%\pestudio"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\qpdf.zip" -o"%TOOLS%"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\radare2.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\ripgrep.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\scdbg.zip" -o"%TOOLS%\scdbg"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sqlite.zip" -o"%TOOLS%"
