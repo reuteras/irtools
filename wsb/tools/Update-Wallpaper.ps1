@@ -52,11 +52,11 @@ param(
 #---------------------------------------------------#
 
 $Wstyle = @{
-            'Centered'  = 0
-            'Stretched' = 2
-            'Fill'      = 10
-            'Fit'       = 6
-            'Span'      = 22
+    'Centered'  = 0
+    'Stretched' = 2
+    'Fill'      = 10
+    'Fit'       = 6
+    'Span'      = 22
 }
 
 #-----------------------------------------------------------------#
@@ -65,30 +65,29 @@ $Wstyle = @{
 #-----------------------------------------------------------------#
 
 $WTile = @{
-            'Tiles'     = 1
-            'NoTiles'   = 0
-        }
+    'Tiles'     = 1
+    'NoTiles'   = 0
+}
 
-    #Main Code
-    $code = @'
+#Main Code
+$code = @'
     using System.Runtime.InteropServices;
     namespace Win32{
-     public class Wallpaper{
-        [DllImport("user32.dll", CharSet=CharSet.Auto)]
-         static extern int SystemParametersInfo (int uAction , int uParam , string lpvParam , int fuWinIni) ;
-         public static void SetWallpaper(string thePath){
-            SystemParametersInfo(20,0,thePath,3);
-         }
+        public class Wallpaper{
+            [DllImport("user32.dll", CharSet=CharSet.Auto)]
+            static extern int SystemParametersInfo (int uAction , int uParam , string lpvParam , int fuWinIni) ;
+            public static void SetWallpaper(string thePath){
+                SystemParametersInfo(20,0,thePath,3);
+            }
+        }
     }
- }
 '@
 
-if ($error[0].exception -like "*Cannot add type. The type name 'Win32.Wallpaper' already exists.*")
-{
-    write-host "Win32.Wallpaer assemblies already loaded"
-    write-host "Proceeding"
+if ($error[0].exception -like "*Cannot add type. The type name 'Win32.Wallpaper' already exists.*") {
+    Write-Host "Win32.Wallpaer assemblies already loaded"
+    Write-Host "Proceeding"
 } else {
-    add-type $code
+    Add-Type $code
 }
 
 # Code for settings TileStyle and Wallpaper Style
@@ -97,5 +96,3 @@ Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name TileWallpaper -Value 
 
 #Apply the Change on the system
 [Win32.Wallpaper]::SetWallpaper($Path)
-
-
