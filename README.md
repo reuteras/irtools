@@ -8,5 +8,4 @@ For Cobalt Strike python code use the scripts *bin/create-venv-cs.(sh|ps1)* to c
 
 - [parse_cs_bin.py][pcb] by ramen0x3f. 
 
-
   [pcb]: https://github.com/ramen0x3f/AggressorScripts/blob/master/parse_cs_bin.py

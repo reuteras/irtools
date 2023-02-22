@@ -127,4 +127,3 @@ Python pip packages will be installed in the background and that installation is
   [xdb]: https://x64dbg.com/
   [yar]: https://github.com/VirusTotal/yara
   [zim]: https://github.com/EricZimmerman
-
