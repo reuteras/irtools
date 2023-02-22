@@ -14,12 +14,10 @@ python -m pip install -U pip
 python -m pip install pip2pi
 
 if (Test-Path -Path ./tools/downloads/pip ) {
-    rm -r ./tools/downloads/pip
+    Remove-Item -r ./tools/downloads/pip
 }
 
 pip2pi ./tools/downloads/pip `
-    acefile `
-    binwalk `
     chepy[extras] `
     colorama `
     dnslib `
@@ -63,4 +61,4 @@ pip2pi ./tools/downloads/pip `
     wheel 2>&1 | findstr /V "ERROR linking"
 
 deactivate
-rm -r "$VENV"
+Remove-Item -r "$VENV"
