@@ -40,34 +40,34 @@ Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sShortTime -val
 Set-ItemProperty -Path "HKCU:\Control Panel\International" -name sTimeFormat -value "HH:mm:ss"
 
 # Rename folders and files
-mv C:\Temp\win64\densityscout.exe C:\Tools\bin\densityscout.exe
-mv C:\Temp\yara64.exe C:\Tools\bin\yara.exe
-mv C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
-mv "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
-mv C:\Tools\cutter-* C:\Tools\cutter
-mv C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
-mv C:\Tools\fakenet* C:\Tools\fakenet
-mv C:\Tools\ghidra_* C:\Tools\ghidra
-mv C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
-mv C:\Tools\qpdf-* C:\Tools\qpdf
-mv C:\Tools\radare2-* C:\Tools\radare2
-mv C:\Tools\ripgrep-* C:\Tools\ripgrep
-mv C:\Tools\sqlite-* C:\Tools\sqlite
-mv C:\Tools\upx-* C:\Tools\upx
+Move-Item C:\Temp\win64\densityscout.exe C:\Tools\bin\densityscout.exe
+Move-Item C:\Temp\yara64.exe C:\Tools\bin\yara.exe
+Move-Item C:\Temp\yarac64.exe C:\Tools\bin\yarac.exe
+Move-Item "C:\Tools\exiftool\exiftool(-k).exe" C:\Tools\exiftool\exiftool.exe
+Move-Item C:\Tools\cutter-* C:\Tools\cutter
+Move-Item C:\Tools\CyberChef\CyberChef_* C:\Tools\CyberChef\CyberChef.html
+Move-Item C:\Tools\fakenet* C:\Tools\fakenet
+Move-Item C:\Tools\ghidra_* C:\Tools\ghidra
+Move-Item C:\Tools\GoReSym\GoReSym_win.exe C:\Tools\GoReSym\GoReSym.exe
+Move-Item C:\Tools\qpdf-* C:\Tools\qpdf
+Move-Item C:\Tools\radare2-* C:\Tools\radare2
+Move-Item C:\Tools\ripgrep-* C:\Tools\ripgrep
+Move-Item C:\Tools\sqlite-* C:\Tools\sqlite
+Move-Item C:\Tools\upx-* C:\Tools\upx
 
 # Remove unused
-rm C:\Tools\GoReSym\GoReSym_lin
-rm C:\Tools\GoReSym\GoReSym_mac
-rm -r C:\Temp\win32
-rm -r C:\Temp\win64
+Remove-Item C:\Tools\GoReSym\GoReSym_lin
+Remove-Item C:\Tools\GoReSym\GoReSym_mac
+Remove-Item -r C:\Temp\win32
+Remove-Item -r C:\Temp\win64
 
 # Remove rules specific to Loki and Thor
-rm C:\temp\yararules\generic_anomalies.yar
-rm C:\temp\yararules\general_cloaking.yar
-rm C:\temp\yararules\gen_webshells_ext_vars.yar
-rm C:\temp\yararules\thor_inverse_matches.yar
-rm C:\temp\yararules\yara_mixed_ext_vars.yar
-rm C:\temp\yararules\configured_vulns_ext_vars.yar
+Remove-Item C:\temp\yararules\generic_anomalies.yar
+Remove-Item C:\temp\yararules\general_cloaking.yar
+Remove-Item C:\temp\yararules\gen_webshells_ext_vars.yar
+Remove-Item C:\temp\yararules\thor_inverse_matches.yar
+Remove-Item C:\temp\yararules\yara_mixed_ext_vars.yar
+Remove-Item C:\temp\yararules\configured_vulns_ext_vars.yar
 
 # Combine rules to one file
 $content = Get-ChildItem C:\temp\yararules\ | Get-Content -raw
@@ -147,7 +147,7 @@ REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Ad
 REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v DontPrettyPath /t REG_DWORD /d 1 /f
 
 # Copy signatures
-cp -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base" C:\Tools\loki\signature-base
+Copy-Item -r "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\git\signature-base" C:\Tools\loki\signature-base
 
 New-Item -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Force
 Set-ItemProperty -Path HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging -Name EnableScriptBlockLogging -Value 1 -Force
@@ -167,10 +167,10 @@ PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documen
 
 # Configure usage of new venv for cmder and PowerShell
 Write-Output "C:\venv\scripts\activate.bat" | Out-File -Append -Encoding "ascii" C:\Tools\cmder\config\user_profile.cmd
-cp "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Signal that everything is done.
-cp "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
+Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
 PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\Update-Wallpaper.ps1 C:\temp\sans.jpg
 C:\Tools\sysinternals\Bginfo64.exe /NOLICPROMPT /timer:0 C:\Users\WDAGUtilityAccount\Documents\tools\config.bgi
 Write-Output "helpers.ps1 done."
