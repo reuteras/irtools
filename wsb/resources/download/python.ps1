@@ -1,6 +1,6 @@
 Write-Host "Download Python pip packages."
 
-$VENV = "$env:HOMEDRIVE$env:HOMEPATH/.wsb"
+$VENV = "$env:HOMEDRIVE$env:HOMEPATH\.wsb"
 
 if (Test-Path -Path $VENV) {
     "Path $VENV exists!"
@@ -8,16 +8,20 @@ if (Test-Path -Path $VENV) {
 }
 
 python3 -m venv "$VENV"
-& "$VENV/Scripts/Activate.ps1"
+& "$VENV\Scripts\Activate.ps1"
 
-python -m pip install -U pip
-python -m pip install pip2pi
+python -m pip install -U pip >> .\log\log.txt
+python -m pip install pip2pi >> .\log\log.txt
 
-if (Test-Path -Path ./tools/downloads/pip ) {
-    Remove-Item -r ./tools/downloads/pip
+if (! (Test-Path -Path .\tmp )) {
+    New-Item -ItemType Directory -Force -Path .\tmp > $null
 }
 
-pip2pi ./tools/downloads/pip `
+if (Test-Path -Path .\tmp\pip ) {
+    Remove-Item -r .\tmp\pip
+}
+
+pip2pi ./tmp/pip `
     chepy[extras] `
     colorama `
     dnslib `
@@ -58,7 +62,9 @@ pip2pi ./tools/downloads/pip `
     xlrd `
     XLMMacroDeobfuscator `
     yara-python `
-    wheel 2>&1 | findstr /V "ERROR linking"
+    wheel 2>&1 | findstr /V "ERROR linking" >> .\log\log.txt
 
 deactivate
 Remove-Item -r "$VENV"
+
+Robocopy.exe .\tmp\pip .\tools\downloads\pip /COPY:D /E /PURGE /XN /XO >> .\log\log.txt
