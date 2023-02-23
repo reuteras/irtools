@@ -1,2 +1,2 @@
 Write-Host "Download Zimmerman tools."
-.\tools\Get-ZimmermanTools.ps1 -Dest .\tools\downloads\Zimmerman
+.\resources\download\Get-ZimmermanTools.ps1 -Dest .\tools\downloads\Zimmerman >> .\log\log.txt 2>&1
