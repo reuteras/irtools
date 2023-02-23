@@ -75,8 +75,9 @@ $content = Get-ChildItem C:\temp\yararules\ | Get-Content -raw
 
 Write-Output "Add to PATH"
 Add-ToUserPath "C:\Program Files\7-Zip"
+Add-ToUserPath "C:\Program Files\Git\bin"
 Add-ToUserPath "C:\Program Files\hxd"
-Add-ToUserPath "C:\Program Files\Notepad++"
+Add-ToUserPath "C:\Program Files (x86)\Notepad++\"
 Add-ToUserPath "C:\Tools\bin"
 Add-ToUserPath "C:\Tools\capa"
 Add-ToUserPath "C:\Tools\chainsaw"
@@ -96,6 +97,7 @@ Add-ToUserPath "C:\Tools\ripgrep"
 Add-ToUserPath "C:\Tools\scdbg"
 Add-ToUserPath "C:\Tools\sqlite"
 Add-ToUserPath "C:\Tools\sysinternals"
+Add-ToUserPath "C:\Tools\thumbcacheviewer"
 Add-ToUserPath "C:\Tools\trid"
 Add-ToUserPath "C:\Tools\upx"
 Add-ToUserPath "C:\Tools\x64dbg\release\x64"
@@ -116,6 +118,7 @@ Add-ToUserPath "C:\Tools\Zimmerman\XWFIM"
 
 Write-Output "Add shortcuts (shorten link names first)"
 REG ADD "HKU\%1\Software\Microsoft\Windows\CurrentVersion\Explorer" /v "link" /t REG_BINARY /d 00000000 /f
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\bash.lnk" "C:\Program Files\Git\bin\bash.exe" "C:\Users\WDAGUtilityAccount\Desktop"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\CyberChef.lnk" "C:\Tools\CyberChef\CyberChef.html"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\cmder.lnk" "C:\Tools\cmder\cmder.exe" "C:\Users\WDAGUtilityAccount\Desktop"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Cutter.lnk" "C:\Tools\cutter\cutter.exe"
@@ -123,7 +126,7 @@ Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\dnSpy.lnk" "C:\Tools\dnSpy\dnS
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\ghidraRun.lnk" "C:\Tools\ghidra\ghidraRun.bat"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Malcat.lnk" "C:\Tools\Malcat\bin\malcat.exe"
-Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files\Notepad++\notepad++.exe"
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files (x86)\Notepad++\notepad++.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PE-bear.lnk" "C:\Tools\pebear\PE-bear.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\pestudio.lnk" "C:\Tools\pestudio\pestudio\pestudio.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk" "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe"
@@ -168,6 +171,8 @@ PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documen
 # Configure usage of new venv for cmder and PowerShell
 Write-Output "C:\venv\scripts\activate.bat" | Out-File -Append -Encoding "ascii" C:\Tools\cmder\config\user_profile.cmd
 Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+(Get-ChildItem -File C:\venv\Scripts\).Name | findstr /R /V "[\._]" | findstr /V activate | `
+    ForEach {Write-Output "function $_() { python C:\venv\Scripts\$_ `$PsBoundParameters.Values + `$args }"} | Out-File -Append -Encoding "ascii" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Signal that everything is done.
 Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\downloads\README.md" "C:\Users\WDAGUtilityAccount\Desktop\"
