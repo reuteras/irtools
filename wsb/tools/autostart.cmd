@@ -19,10 +19,10 @@ PowerShell.exe -ExecutionPolicy Bypass -File "C:\Users\WDAGUtilityAccount\Docume
 rem Copy files
 copy /B /Y /V %SETUP_PATH%\* %TEMP%\
 copy /B %SETUP_PATH%\jq.exe C:\Tools\bin\
-xcopy /S /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
-xcopy /S /E %SETUP_PATH%\git C:\git /EXCLUDE \.git\
-xcopy /S /E "%SETUP_PATH%\git\signature-base\yara" C:\temp\yararules
-xcopy /S /E %SETUP_PATH%\Zimmerman C:\Tools\Zimmerman
+xcopy /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
+xcopy /E %SETUP_PATH%\git C:\git 
+xcopy /E "%SETUP_PATH%\git\signature-base\yara" C:\temp\yararules
+xcopy /E %SETUP_PATH%\Zimmerman C:\Tools\Zimmerman
 cp "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk" "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk"
 
 rem Set temporary background
@@ -56,6 +56,7 @@ rem Unzip
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\scdbg.zip" -o"%TOOLS%\scdbg"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sqlite.zip" -o"%TOOLS%"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\sysinternals.zip" -o"%TOOLS%\sysinternals"
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\thumbcacheviewer.zip" -o"%TOOLS%\thumbcacheviewer"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\trid.zip" -o"%TOOLS%\trid"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\triddefs.zip" -o"%TOOLS%\trid"
 "%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\upx.zip" -o"%TOOLS%"
@@ -78,12 +79,14 @@ rem Start Sysmon
 "%TOOLS%\sysinternals\Sysmon64.exe" -accepteula -i "%TEMP%\sysmonconfig-export.xml"
 
 rem Install packages
-"%TEMP%\vscode.exe" /verysilent /suppressmsgboxes /MERGETASKS="!runcode,desktopicon,quicklaunchicon,addcontextmenufiles,addcontextmenufolders,addtopath"
-"%TEMP%\notepad++.exe" /S
 "%TOOLS%\hxd\HxDSetup.exe" /VERYSILENT /NORESTART
+"%TEMP%\git.exe" /VERYSILENT /NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh"
+"%TEMP%\notepad++.exe" /S
+"%TEMP%\PDFStreamDumper.exe" /verysilent
+"%TEMP%\python3.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 "%TEMP%\vcredist_x64.exe" /passive /norestart
 "%TEMP%\vcredist_16_x64.exe" /passive /norestart
-"%TEMP%\python3.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+"%TEMP%\vscode.exe" /verysilent /suppressmsgboxes /MERGETASKS="!runcode,desktopicon,quicklaunchicon,addcontextmenufiles,addcontextmenufolders,addtopath"
 
 rem https://www.wireshark.org/docs/wsug_html_chunked/ChBuildInstallWinInstall.html
 rem silent install will not install npcap
