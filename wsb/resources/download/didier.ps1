@@ -1,5 +1,8 @@
 Write-Host "Download Didier Stevens tools."
 New-Item -ItemType Directory -Force -Path .\tools\downloads\DidierStevens > $null
+New-Item -ItemType Directory -Force -Path .\tmp\tools\downloads\DidierStevens > $null
+
+. $PSScriptRoot\common.ps1
 
 $DidierStevensSuite = `
     "1768.json", `
@@ -71,7 +74,7 @@ $DidierStevensSuite = `
     "plugin_vba_summary.py", `
     "plugin_vba.py", `
     "plugin_vbaproject.py", `
-    "plugin_version_vba.py ", `
+    "plugin_version_vba.py", `
     "process-binary-file.py", `
     "process-text-file.py", `
     "python-per-line.library", `
@@ -95,15 +98,17 @@ $DidierStevensSuite = `
 
 foreach ($Tool in $DidierStevensSuite)
 {
-  curl -s -o .\tools\downloads\DidierStevens\$Tool https://raw.githubusercontent.com/DidierStevens/DidierStevensSuite/master/$Tool
+  Get-FileFromUri -uri https://raw.githubusercontent.com/DidierStevens/DidierStevensSuite/master/$Tool -FilePath .\tools\downloads\DidierStevens\$Tool
 }
 
 $DidierStevensBeta = "metatool.py", `
     "onedump.py", `
     "pngdump.py", `
-    "xslbdump.py"
+    "xlsbdump.py"
 
 foreach ($Tool in $DidierStevensBeta)
 {
-  curl -s -o .\tools\downloads\DidierStevens\$Tool https://raw.githubusercontent.com/DidierStevens/Beta/master/$Tool
+  Get-FileFromUri -uri https://raw.githubusercontent.com/DidierStevens/Beta/master/$Tool -FilePath .\tools\downloads\DidierStevens\$Tool
 }
+
+Remove-Item -r .\tmp\tools
