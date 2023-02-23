@@ -62,7 +62,7 @@ Downloaded git repositories:
 
 First enable Windows Sandbox by running **Add and remove Windows features** and adding Windows Sandbox.
 
-Then start a PowerShell terminal and download the code.
+Now start a PowerShell terminal and download the code. You have to have git available to use this tool. Not only to checkout the code from the repository.
 
 	git clone https:/github.com/reuteras/irtools.git
 	cd irtools\wsb
