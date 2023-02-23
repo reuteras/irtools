@@ -1,4 +1,6 @@
+log/*
 readonly/*
 readwrite/*
 *.wsb
+tmp/*
 tools/downloads
