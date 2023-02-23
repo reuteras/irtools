@@ -7,7 +7,7 @@ Tools included:
 - [Amazon Corretto][amc]
 - [capa][cap]
 - [chainsaw][cha]
-- [cmder][cer]
+- [cmder][cer] (will probably be removed in favour of git bash)
 - [Cutter][cut]
 - [CyberChef][cyb]
 - [DensityScout][den]
@@ -16,6 +16,7 @@ Tools included:
 - [flare-fakenet-ng][ffn]
 - [flare-floss][flf]
 - [Ghidra][ghi]
+- [Git][git]
 - [GoReSym][grs]
 - [HxD][hxd]
 - [jq][jq]
@@ -23,6 +24,7 @@ Tools included:
 - [Malcat][mal]
 - [ncat][nca]
 - [Notepad++][not]
+- [PdfStream Dumper][psd]
 - [PE-bear][peb]
 - [PEstudio][pes]
 - [Python][pyt]
@@ -32,6 +34,7 @@ Tools included:
 - [sqlite][sql] cli
 - [SysinternalsSuite][syi]
 - [Sysmon][sym] started with [SwiftOnSecurity sysmon-config][sws]
+- [Thumbcache viewer][thu]
 - [TrID][tri]
 - [x64dbg][xdb]
 - [upx][upx]
@@ -62,15 +65,20 @@ First enable Windows Sandbox by running **Add and remove Windows features** and 
 Then start a PowerShell terminal and download the code.
 
 	git clone https:/github.com/reuteras/irtools.git
-	cd irtools/wsb
+	cd irtools\wsb
 
 Create configuration with your local path by running.
 
-	./createSandboxConfig.ps1
+	.\createSandboxConfig.ps1
 
 You need to have Python 3.10 installed (or change to another version in the Sandbox by modifying the scripts) and then download all binaries and scripts with the help of the following command.
 
-	./downloadFiles.ps1
+	.\downloadFiles.ps1
+
+If you like to have a more detailed view on the progress you can run the following **PowerShell** variant of **tail -f**
+
+    Get-Content .\log\log.txt -Wait
+    
 
 ## Usage
 
@@ -97,6 +105,7 @@ Python pip packages will be installed in the background and that installation is
   [ffn]: https://github.com/mandiant/flare-fakenet-ng
   [flf]: https://github.com/mandiant/flare-floss
   [ghi]: https://github.com/NationalSecurityAgency/ghidra
+  [git]: https://github.com/git-for-windows/git/
   [grs]: https://github.com/mandiant/GoReSym
   [hxd]: https://mh-nexus.de/
   [jq]:  https://github.com/stedolan/jq
@@ -108,6 +117,7 @@ Python pip packages will be installed in the background and that installation is
   [peb]: https://github.com/hasherezade/pe-bear
   [pes]: https://www.winitor.com/
   [pip]: ./resources/download/python.ps1
+  [psd]: https://github.com/dzzie/pdfstreamdumper/
   [pyt]: https://python.org/
   [qpd]: https://github.com/qpdf/qpdf
   [rad]: https://github.com/radareorg/radare2
@@ -118,6 +128,7 @@ Python pip packages will be installed in the background and that installation is
   [sws]: https://github.com/SwiftOnSecurity/sysmon-config
   [syi]: https://learn.microsoft.com/en-us/sysinternals/
   [sym]: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+  [thu]: https://thumbcacheviewer.github.io/
   [tri]: https://mark0.net/soft-trid-e.html
   [upx]: https://github.com/upx/upx
   [vis]: https://www.visidata.org/
