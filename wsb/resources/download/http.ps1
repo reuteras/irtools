@@ -11,6 +11,7 @@ Try {
     Get-FileFromUri -uri "https://sourceforge.net/projects/exiftool/files/latest/download" -FilePath ".\tools\downloads\exiftool.zip"
     Get-FileFromUri -uri "https://www.winitor.com/tools/pestudio/current/pestudio.zip" -FilePath ".\tools\downloads\pestudio.zip"
     Get-FileFromUri -uri "https://mh-nexus.de/downloads/HxDSetup.zip" -FilePath ".\tools\downloads\hxd.zip"
+    Get-FileFromUri -uri "https://download.documentfoundation.org/libreoffice/stable/7.5.0/win/x86_64/LibreOffice_7.5.0_Win_x86-64.msi" -FilePath ".\tools\downloads\LibreOffice.msi"
     Get-FileFromUri -uri "https://mark0.net/download/trid_w32.zip" -FilePath ".\tools\downloads\trid.zip"
     Get-FileFromUri -uri "https://mark0.net/download/triddefs.zip" -FilePath ".\tools\downloads\triddefs.zip"
     Get-FileFromUri -uri "https://malcat.fr/latest/malcat_win64_lite.zip" -FilePath ".\tools\downloads\malcat.zip"
