@@ -1,2 +1,0 @@
-(Get-Content sandbox_clean_no_network.wsb.template).replace('__SANDBOX__', $PSScriptRoot) | Set-Content .\sandbox_clean_no_network.wsb
-(Get-Content sandbox_tools_no_network.wsb.template).replace('__SANDBOX__', $PSScriptRoot) | Set-Content .\sandbox_tools_no_network.wsb

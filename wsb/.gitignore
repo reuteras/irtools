@@ -1,7 +1,0 @@
-log/*
-readonly/*
-readwrite/*
-*.wsb
-tmp/*
-tools/config.txt
-tools/downloads
