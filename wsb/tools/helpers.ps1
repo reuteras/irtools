@@ -141,11 +141,13 @@ if ( $env:WSDFIR_JAVA -eq '"Yes"' ) {
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files\Notepad++\notepad++.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PE-bear.lnk" "C:\Tools\pebear\PE-bear.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\pestudio.lnk" "C:\Tools\pestudio\pestudio\pestudio.exe"
-Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk" "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Tools.lnk" "C:\Tools"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\x64dbg.lnk" "C:\Tools\x64dbg\release\x64\x64dbg.exe"
 
+# PowerShell
 Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\Microsoft.PowerShell_profile.ps1" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+New-Item -ItemType Directory $PSHome\Modules\PSDecode
+Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\utils\PSDecode.psm1" "$PSHome\Modules\PSDecode"
 
 Write-Output "Hide file extensions"
 REG ADD HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
@@ -184,6 +186,7 @@ if ( $env:WSDFIR_PYTHON_PIP -eq '"Yes"' ) {
     $shell = New-Object -ComObject "Shell.Application"
     $shell.sendkeys('{F5}')
     PowerShell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Documents\tools\install_python_tools.ps1
+    Copy-Item "C:\Users\WDAGUtilityAccount\Documents\tools\utils\powershell-cleanup.py" "C:\venv\Scripts\"
     # Configure usage of new venv for PowerShell
     (Get-ChildItem -File C:\venv\Scripts\).Name | findstr /R /V "[\._]" | findstr /V activate | `
         ForEach-Object {Write-Output "function $_() { python C:\venv\Scripts\$_ `$PsBoundParameters.Values + `$args }"} | Out-File -Append -Encoding "ascii" "C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
