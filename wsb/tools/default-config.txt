@@ -6,7 +6,7 @@ rem Install Java - also affects Ghidra
 SET WSDFIR_JAVA="Yes"
 rem Install LibreOffice
 SET WSDFIR_LIBREOFFICE="No"
-rem Install PDFStream Dumber
+rem Install PDFStream Dumper
 SET WSDFIR_PDFSTREAM="No"
 rem Install Python pip packages - Python is still installed
 SET WSDFIR_PYTHON_PIP="Yes"
