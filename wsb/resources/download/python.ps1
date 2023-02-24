@@ -30,6 +30,7 @@ pip2pi ./tmp/pip `
     extract-msg `
     fonttools `
     hachoir `
+    jsbeautifier `
     LnkParse3 `
     lxml `
     minidump `
