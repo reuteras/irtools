@@ -3,4 +3,5 @@ readonly/*
 readwrite/*
 *.wsb
 tmp/*
+tools/config.bat
 tools/downloads
