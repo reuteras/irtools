@@ -5,6 +5,7 @@ This repository contains a collection of scripts to install tools for DFIR work 
 Tools included:
 
 - [Amazon Corretto][amc]
+- [Bytecode Viewer][bcv]
 - [capa][cap]
 - [chainsaw][cha]
 - [cmder][cer] (will probably be removed in favour of git bash)
@@ -20,10 +21,13 @@ Tools included:
 - [GoReSym][grs]
 - [HxD][hxd]
 - [jq][jq]
+- [LibreOffice][lio]
 - [LOKI][lok]
 - [Malcat][mal]
+- [MessageViewer][mev]
 - [ncat][nca]
-- [Notepad++][not]
+- [Notepad++][not] with the following added plugins:
+  - [comparePlus][ncp]
 - [PdfStream Dumper][psd]
 - [PE-bear][peb]
 - [PEstudio][pes]
@@ -93,6 +97,7 @@ Python pip packages will be installed in the background and that installation is
 - [ ] Would be nice to get Windows Terminal in the sandbox.
 
   [amc]: https://docs.aws.amazon.com/corretto/
+  [bcv]: https://github.com/Konloch/bytecode-viewer
   [cap]: https://github.com/mandiant/capa
   [cer]: https://github.com/cmderdev/cmder
   [cha]: https://github.com/WithSecureLabs/chainsaw
@@ -109,9 +114,12 @@ Python pip packages will be installed in the background and that installation is
   [grs]: https://github.com/mandiant/GoReSym
   [hxd]: https://mh-nexus.de/
   [jq]:  https://github.com/stedolan/jq
+  [lio]: https://www.libreoffice.org/
   [lok]: https://github.com/Neo23x0/Loki
   [mal]: https://malcat.fr/
+  [mev]: https://github.com/lolo101/MsgViewer
   [nca]: https://nmap.org/ncat/
+  [ncp]: https://github.com/pnedev/comparePlus
   [not]: https://notepad-plus-plus.org/
   [npc]: https://npcap.com/
   [peb]: https://github.com/hasherezade/pe-bear
