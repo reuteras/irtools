@@ -3,8 +3,6 @@ set SETUP_PATH=C:\users\WDAGUtilityAccount\Documents\tools\downloads
 set TEMP=C:\temp
 set TOOLS=C:\Tools
 
-call C:\Users\WDAGUtilityAccount\Documents\tools\config.bat
-
 rem Create directories
 mkdir C:\git
 mkdir C:\temp
@@ -21,6 +19,10 @@ PowerShell.exe -ExecutionPolicy Bypass -File "C:\Users\WDAGUtilityAccount\Docume
 
 rem Copy files
 copy /B /Y /V %SETUP_PATH%\* %TEMP%\
+
+copy "C:\Users\WDAGUtilityAccount\Documents\tools\config.txt" C:\temp\config.bat
+call C:\temp\config.bat
+
 copy /B %SETUP_PATH%\jq.exe C:\Tools\bin\
 copy "C:\Users\WDAGUtilityAccount\Documents\tools\.bashrc" "C:\Users\WDAGUtilityAccount\"
 xcopy /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
