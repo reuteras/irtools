@@ -56,6 +56,11 @@ Move-Item C:\Tools\radare2-* C:\Tools\radare2
 Move-Item C:\Tools\ripgrep-* C:\Tools\ripgrep
 Move-Item C:\Tools\sqlite-* C:\Tools\sqlite
 Move-Item C:\Tools\upx-* C:\Tools\upx
+if ( $env:WSDFIR_JAVA -eq '"Yes"' ) {
+    Move-Item C:\Temp\BCV.jar C:\Tools\lib
+    Move-Item C:\Temp\msgviewer.jar C:\Tools\lib
+    Write-Output "java -Xmx3G -jar C:\Tools\lib\BCV.jar" | Out-File -Encoding "ascii" C:\Tools\bin\bcv.bat
+}
 
 # Remove unused
 Remove-Item C:\Tools\GoReSym\GoReSym_lin
@@ -79,7 +84,7 @@ Write-Output "Add to PATH"
 Add-ToUserPath "C:\Program Files\7-Zip"
 Add-ToUserPath "C:\Program Files\Git\bin"
 Add-ToUserPath "C:\Program Files\hxd"
-Add-ToUserPath "C:\Program Files (x86)\Notepad++\"
+Add-ToUserPath "C:\Program Files\Notepad++\"
 Add-ToUserPath "C:\Tools\bin"
 Add-ToUserPath "C:\Tools\capa"
 Add-ToUserPath "C:\Tools\chainsaw"
@@ -130,7 +135,10 @@ if ( $env:WSDFIR_JAVA -eq '"Yes"' ) {
 }
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\HxD.lnk" "C:\Program Files\HxD\HxD.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Malcat.lnk" "C:\Tools\Malcat\bin\malcat.exe"
-Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files (x86)\Notepad++\notepad++.exe"
+if ( $env:WSDFIR_JAVA -eq '"Yes"' ) {
+    Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\msgviewer.lnk" "C:\Tools\lib\msgviewer.jar"
+}
+Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\Notepad++.lnk" "C:\Program Files\Notepad++\notepad++.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PE-bear.lnk" "C:\Tools\pebear\PE-bear.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\pestudio.lnk" "C:\Tools\pestudio\pestudio\pestudio.exe"
 Set-Shortcut "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk" "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe"

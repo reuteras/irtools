@@ -12,6 +12,7 @@ mkdir C:\temp\yararules
 mkdir C:\Tools
 mkdir C:\Tools\bin
 mkdir C:\Tools\DidierStevens
+mkdir C:\Tools\lib
 mkdir C:\Tools\Zimmerman
 mkdir C:\Users\WDAGUtilityAccount\Documents\WindowsPowerShell
 
@@ -98,6 +99,7 @@ rem Install packages
 "%TOOLS%\hxd\HxDSetup.exe" /VERYSILENT /NORESTART
 "%TEMP%\git.exe" /VERYSILENT /NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh"
 "%TEMP%\notepad++.exe" /S
+"%PROGRAMFILES%\7-Zip\7z.exe" x -aoa "%TEMP%\comparePlus.zip" -o"C:\Program Files\Notepad++\Plugins\ComparePlus"
 if %WSDFIR_PDFSTREAM%=="Yes" "%TEMP%\PDFStreamDumper.exe" /verysilent
 "%TEMP%\python3.exe" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 "%TEMP%\vcredist_x64.exe" /passive /norestart
