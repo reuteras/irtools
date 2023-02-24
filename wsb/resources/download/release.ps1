@@ -31,6 +31,8 @@ Try {
     Get-GitHubRelease -repo "hasherezade/pe-bear" -path ".\tools\downloads\pebear.zip" -match x64_win_vs17.zip
     Get-GitHubRelease -repo "gchq/CyberChef" -path ".\tools\downloads\CyberChef.zip" -match CyberChef
     Get-GitHubRelease -repo "git-for-windows/git" -path ".\tools\downloads\git.exe" -match 64-bit.exe
+    Get-GitHubRelease -repo "Konloch/bytecode-viewer" -path ".\tools\downloads\BCV.jar" -match Bytecode
+    Get-GitHubRelease -repo "lolo101/MsgViewer" -path ".\tools\downloads\msgviewer.jar" -match msgviewer.jar
     Get-GitHubRelease -repo "mandiant/capa" -path ".\tools\downloads\capa-windows.zip" -match windows
     Get-GitHubRelease -repo "mandiant/flare-floss" -path ".\tools\downloads\floss.zip" -match windows
     Get-GitHubRelease -repo "mandiant/flare-fakenet-ng" -path ".\tools\downloads\fakenet.zip" -match fakenet
@@ -38,6 +40,7 @@ Try {
     Get-GitHubRelease -repo "NationalSecurityAgency/ghidra" -path ".\tools\downloads\ghidra.zip" -match ghidra
     Get-GitHubRelease -repo "Neo23x0/Loki" -path ".\tools\downloads\loki.zip" -match loki
     Get-GitHubRelease -repo "notepad-plus-plus/notepad-plus-plus" -path ".\tools\downloads\notepad++.exe" -match Installer.x64.exe
+    Get-GitHubRelease -repo "pnedev/comparePlus" -path ".\tools\downloads\comparePlus.zip" -match x64.zip
     Get-GitHubRelease -repo "qpdf/qpdf" -path ".\tools\downloads\qpdf.zip" -match msvc64.zip
     Get-GitHubRelease -repo "radareorg/radare2" -path ".\tools\downloads\radare2.zip" -match w64.zip
     Get-GitHubRelease -repo "rizinorg/cutter" -path ".\tools\downloads\cutter.zip" -match Windows-x86_64.zip
