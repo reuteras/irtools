@@ -29,7 +29,6 @@ xcopy /E %SETUP_PATH%\DidierStevens C:\Tools\DidierStevens
 xcopy /E %SETUP_PATH%\git C:\git 
 xcopy /E "%SETUP_PATH%\git\signature-base\yara" C:\temp\yararules
 xcopy /E %SETUP_PATH%\Zimmerman C:\Tools\Zimmerman
-copy "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell\Windows PowerShell.lnk" "C:\Users\WDAGUtilityAccount\Desktop\PowerShell.lnk"
 
 rem Set temporary background
 PowerShell.exe -ExecutionPolicy Bypass -File "C:\Users\WDAGUtilityAccount\Documents\tools\installing.ps1" 2>&1 >> C:\temp\log.txt
