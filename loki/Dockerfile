@@ -1,5 +1,4 @@
-# hadolint ignore=DL3007
-FROM debian:latest
+FROM debian:bookworm
 WORKDIR /opt
 # hadolint ignore=DL3003,DL3027
 RUN apt update && \
