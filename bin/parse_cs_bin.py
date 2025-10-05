@@ -62,7 +62,7 @@ if __name__=="__main__":
                         csvfieldnames = []
                         for entry in bindata:
                             for key in entry.keys():
-                                if not key in csvfieldnames:
+                                if key not in csvfieldnames:
                                     csvfieldnames.append(key)
                         writer = csv.DictWriter(csvfile, fieldnames=csvfieldnames, extrasaction='raise', restval='')
 
