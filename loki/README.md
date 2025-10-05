@@ -1,6 +1,6 @@
-#  Loki in a container
+# Loki in a container
 
-This container is based on an [entry]|ent] on the Internet Storm Center blog.
+This container is based on an [entry][ent] on the Internet Storm Center blog.
 
 ## Build
 
