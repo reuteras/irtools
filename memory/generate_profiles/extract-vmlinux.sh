@@ -30,7 +30,7 @@ try_decompress()
     for	pos in $(tr "$1\n$2" "\n$2=" < "$img" | grep -abo "^$2")
 	do
 		pos=${pos%%:*}
-		tail -c+"$pos" "$img" | $3 > $tmp 2> /dev/null
+		tail -c+"$pos" "$img" | "$3" > "$tmp" 2> /dev/null
 		check_vmlinux "$tmp"
 	done
 }

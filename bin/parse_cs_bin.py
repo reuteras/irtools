@@ -12,11 +12,11 @@ The parse_cs_bin.py script will recursively search the provided directories for 
 
 The CSV files generated will be written to an output directory and grouped by the directory path they were located.
 """
-from argparse import ArgumentParser,RawTextHelpFormatter
+from argparse import ArgumentParser
 from glob import glob
 from os import makedirs, path
-from sys import argv
-import csv, javaobj 
+import csv
+import javaobj 
 
 if __name__=="__main__":
     parser = ArgumentParser(description="Generate CSV representations of Cobalt Strike .bin logs ") 
@@ -49,7 +49,7 @@ if __name__=="__main__":
                     # Assume it's a dict, if not, try a list.
                     try:
                         bindata = [d for k,d in javaobj.loads(open(filename,"rb").read()).items()]
-                    except:
+                    except: # noqa: E722
                         bindata = [javaobj.loads(open(filename,"rb").read())]
                     
                     if datatype in ["archives"]:
@@ -94,10 +94,10 @@ if __name__=="__main__":
                 for session in sessions:
                     try:
                         c2_usage[session['id']]['opened'] = session['opened']
-                    except:
+                    except: # noqa: E722
                         pass
 
-                with open(path.join(folder, f"c2usage.csv"), 'w', newline='') as csvfile:
+                with open(path.join(folder, "c2usage.csv"), 'w', newline='') as csvfile:
                     usage_list = [v for k, v in c2_usage.items()]
                     if len(usage_list) > 0:
                         writer = csv.DictWriter(csvfile, fieldnames=usage_list[0].keys())
@@ -106,4 +106,4 @@ if __name__=="__main__":
                         for entry in usage_list:
                             writer.writerow(entry)
                         
-                    print(f'[*] Created file {path.join(folder, f"c2usage.csv")}')
+                    print(f'[*] Created file {path.join(folder, "c2usage.csv")}')
