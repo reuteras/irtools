@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:4.2
+    volumes:
+      - db:/data/db/
+
+  rita:
+    image: quay.io/activecm/rita:${VERSION:-latest}
+    links:
+      - db:localhost
+    volumes:
+      - ./rita.yaml:/etc/rita/config.yaml:ro
+      - ./output:/logs:ro
+    depends_on:
+      - db
+
+volumes:
+  db:
