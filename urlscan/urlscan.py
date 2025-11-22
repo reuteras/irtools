@@ -3,6 +3,7 @@
 # code for urlscan.io.
 
 from time import sleep
+
 # pylint: disable=W0622
 from rich import print
 from pathlib import Path
@@ -13,6 +14,7 @@ import json
 import requests
 import sys
 
+
 def read_configuration(config_file):
     """Read configuration file."""
     config = configparser.RawConfigParser()
@@ -21,6 +23,7 @@ def read_configuration(config_file):
         print("Can't find configuration file.")
         sys.exit(1)
     return config
+
 
 def get_one_image(checked_url, image_url, uuid):
     """Get one image from urlscan.io."""
@@ -45,6 +48,7 @@ def get_one_image(checked_url, image_url, uuid):
         sleep(2)
     return status_code
 
+
 def get_images(uuids):
     """Get images from urlscan.io."""
     for uuid in uuids:
@@ -54,16 +58,24 @@ def get_images(uuids):
         while status_code == 404:
             status_code = get_one_image(checked_url, image_url, uuid)
 
+
 def urlscan_submission(url, urlscan_key):
     """Submit url to urlscan."""
     scan_type = "public"
     headers = {"API-Key": urlscan_key, "Content-Type": "application/json"}
     data = {"url": url, "visibility": scan_type}
-    response = requests.post('https://urlscan.io/api/v1/scan/', headers=headers, data=json.dumps(data), timeout=10)
+    response = requests.post(
+        "https://urlscan.io/api/v1/scan/",
+        headers=headers,
+        data=json.dumps(data),
+        timeout=10,
+    )
     if response.status_code == 200:
         print(f"[green]Submitted {url}[/green]")
     elif response.status_code == 429:
-        print(f"[red]URLSCAN: We somehow exceeded an API limit checking url {url}.[/red]")
+        print(
+            f"[red]URLSCAN: We somehow exceeded an API limit checking url {url}.[/red]"
+        )
         return {}
     else:
         print("[red]URLSCAN: Encountered an unknown API error. Quitting.[/red]")
@@ -71,12 +83,14 @@ def urlscan_submission(url, urlscan_key):
     uuid = response.json()["uuid"]
     return {uuid: url}
 
+
 def main():
     """Main function."""
     uuids = {}
     parser = argparse.ArgumentParser(description="Get images from URLScan")
-    parser.add_argument('urls', metavar='urls', type=str, nargs='+',
-                        help='urls to check')
+    parser.add_argument(
+        "urls", metavar="urls", type=str, nargs="+", help="urls to check"
+    )
 
     config = read_configuration("urlscan.conf")
     args = parser.parse_args()
@@ -93,6 +107,7 @@ def main():
             uuids.update(urlscan_result)
 
     get_images(uuids)
+
 
 if __name__ == "__main__":
     main()
