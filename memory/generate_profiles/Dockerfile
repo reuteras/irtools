@@ -4,6 +4,7 @@ WORKDIR /
 
 COPY build.sh .
 
+# hadolint ignore=DL3003,DL3027
 RUN apt-get update --fix-missing && \
     apt-get install -qqy --no-install-recommends \
         build-essential \
@@ -18,7 +19,8 @@ RUN apt-get update --fix-missing && \
     git clone https://github.com/volatilityfoundation/dwarf2json && \
     cd /dwarf2json && \
     go build && \
-    go install
+    go install && \
+    rm -rf /var/lib/apt/lists
 
 COPY extract-vmlinux.sh .
 
