@@ -1,9 +1,14 @@
 FROM debian:trixie
 WORKDIR /opt
-# hadolint ignore=DL3003,DL3027
+
+# hadolint ignore=DL3003,DL3008,DL3027
 RUN apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get -y install git python-is-python3 python3-pip libssl-dev && \
+    apt-get -y install --no-install-recommends \
+        git \
+        python-is-python3 \
+        python3-pip \
+        libssl-dev && \
     git clone https://github.com/Neo23x0/Loki.git && \
     cd Loki && \
     chmod a+x loki.py && \

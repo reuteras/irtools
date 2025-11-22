@@ -4,7 +4,7 @@ WORKDIR /
 
 COPY build.sh .
 
-# hadolint ignore=DL3003,DL3027
+# hadolint ignore=DL3003,DL3008,DL3027
 RUN apt-get update --fix-missing && \
     apt-get install -qqy --no-install-recommends \
         build-essential \
