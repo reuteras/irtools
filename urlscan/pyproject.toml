@@ -1,14 +1,11 @@
 [project]
 name = "urlscan"
 version = "0.1.0"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
-    "requests",
+    "requests>=2.33.0",
     "rich",
 ]
-
-[project.scripts]
-urlscan = "urlscan:main"
 
 [dependency-groups]
 dev = [
