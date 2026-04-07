@@ -1,0 +1,22 @@
+default: sync test-pylint test-bandit
+
+sync:
+    uv sync --all-groups
+
+upgrade-requirements:
+    uv lock --upgrade
+
+clean:
+    rm -rf .venv __pycache__ bandit-env images pylint
+    find . -name "*.pyc" -exec rm -f {} \;
+
+test-pylint: sync
+    mkdir -p pylint
+    uv run pylint urlscan.py > pylint/urlscan.pylint || true
+
+test-bandit:
+    rm -rf bandit-env
+    python3 -m venv bandit-env
+    source bandit-env/bin/activate && python3 -m pip install bandit
+    ./bandit-env/bin/bandit ./urlscan.py
+    rm -rf bandit-env
