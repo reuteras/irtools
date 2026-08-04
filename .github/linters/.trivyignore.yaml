@@ -1,0 +1,14 @@
+misconfigurations:
+  - id: AVD-DS-0013
+    paths:
+      - "loki/Dockerfile"
+      - "memory/generate_profiles/Dockerfile"
+    statement: >-
+      RUN intentionally uses 'cd' to scope a directory change to a
+      single build step instead of WORKDIR; not changing this.
+  - id: AVD-DS-0002
+    paths:
+      - "loki/Dockerfile"
+    statement: >-
+      Loki needs root to read arbitrary files on scanned hosts/volumes;
+      running as non-root would defeat its purpose.
