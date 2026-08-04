@@ -1,3 +1,4 @@
+#checkov:skip=CKV_DOCKER_3: Loki needs root to read arbitrary files on scanned hosts/volumes
 FROM debian:trixie
 WORKDIR /opt
 
@@ -12,12 +13,15 @@ RUN apt-get update && \
     git clone https://github.com/Neo23x0/Loki.git && \
     cd Loki && \
     chmod a+x loki.py && \
-    python3 -m pip install --no-cache-dir -r requirements.txt && \
+    python3 -m pip install --break-system-packages --no-cache-dir -r requirements.txt && \
     git clone https://github.com/Neo23x0/signature-base.git && \
     apt-get auto-remove -qqy git apt-transport-https python3-pip python3-setuptools python3-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc && \
     rm -rf /usr/local/share/man /var/cache/debconf/*-old && \
     rm -rf /opt/Loki/.git*
+
+HEALTHCHECK CMD [ -f /opt/Loki/loki.py ] || exit 1
+
 #ENTRYPOINT [ "/usr/bin/python3", "/opt/Loki/loki.py" ]
 CMD ["--help"]
