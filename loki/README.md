@@ -17,4 +17,3 @@ docker run --rm -it -v $(PWD):/evidences loki -p /evidences --noprocscan
 ```
 
   [ent]: https://isc.sans.edu/diary/29788
-

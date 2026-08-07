@@ -2,17 +2,18 @@
 # Started with https://github.com/montysecurity/InfraHunter but only use the
 # code for urlscan.io.
 
-from time import sleep
-
-# pylint: disable=W0622
-from rich import print
-from pathlib import Path
 import argparse
 import configparser
 import hashlib
 import json
-import requests
 import sys
+from pathlib import Path
+from time import sleep
+
+import requests
+
+# pylint: disable=W0622
+from rich import print
 
 
 def read_configuration(config_file):

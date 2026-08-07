@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Parse Cobalt Strike Logs
 Description:    Generate CSV representations of Cobalt Strike .bin logs
 Authors:        Alyssa R. (@ramen0x3f), Nick M. (@kulinacs)
@@ -13,10 +14,12 @@ The parse_cs_bin.py script will recursively search the provided directories for 
 The CSV files generated will be written to an output directory and grouped by the directory path they were located.
 """
 
+import csv
 from argparse import ArgumentParser
 from glob import glob
 from os import makedirs, path
-import csv
+from pathlib import Path
+
 import javaobj
 
 if __name__ == "__main__":
@@ -80,11 +83,11 @@ if __name__ == "__main__":
                         bindata = [
                             d
                             for k, d in javaobj.loads(
-                                open(filename, "rb").read()
+                                Path(filename).read_bytes()
                             ).items()
                         ]
                     except:  # noqa: E722
-                        bindata = [javaobj.loads(open(filename, "rb").read())]
+                        bindata = [javaobj.loads(Path(filename).read_bytes())]
 
                     if datatype in ["archives"]:
                         tempdata = bindata
@@ -101,7 +104,7 @@ if __name__ == "__main__":
                     if len(bindata) > 0:
                         csvfieldnames = []
                         for entry in bindata:
-                            for key in entry.keys():
+                            for key in entry:
                                 if key not in csvfieldnames:
                                     csvfieldnames.append(key)
                         writer = csv.DictWriter(
@@ -114,11 +117,10 @@ if __name__ == "__main__":
                         writer.writeheader()
                         for entry in bindata:
                             # Redact the passwords
-                            if entry.get("password"):
-                                if not args.show_passwords:
-                                    entry["password"] = "***REDACTED***"
+                            if entry.get("password") and not args.show_passwords:
+                                entry["password"] = "***REDACTED***"
                             writer.writerow(entry)
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"Error processing file: {filename} - {e}")
 
     print("[*] Created the following folders:")
@@ -139,7 +141,7 @@ if __name__ == "__main__":
                 for session in sessions:
                     try:
                         c2_usage[session["id"]]["opened"] = session["opened"]
-                    except:  # noqa: E722
+                    except KeyError:
                         pass
 
                 with open(path.join(folder, "c2usage.csv"), "w", newline="") as csvfile:

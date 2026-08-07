@@ -47,7 +47,7 @@ for pcap in "${PCAP_DIR}"/* ; do
             echo "Log exists! ${LOG_DIR}/${logname}.${time}.log"
             exit
         fi
-        mv "${log}" "${LOG_DIR}"/"${logname}.${time}.log" 
+        mv "${log}" "${LOG_DIR}"/"${logname}.${time}.log"
     done
 done
 

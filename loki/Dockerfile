@@ -2,7 +2,7 @@
 FROM debian:trixie
 WORKDIR /opt
 
-# hadolint ignore=DL3003,DL3008,DL3027
+# hadolint ignore=DL3003,DL3005,DL3008,DL3027
 RUN apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get -y install --no-install-recommends \

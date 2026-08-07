@@ -1,15 +1,18 @@
-import sys
-import subprocess
-import json
+#!/usr/bin/env python3
+import argparse
 import csv
+import datetime
 import io
+import json
+import random
+import re
+import subprocess
+import sys
+
 import requests
 from requests.auth import HTTPBasicAuth
 from urllib3.exceptions import InsecureRequestWarning
-import datetime
-import re
-import argparse
-import random
+
 # Making these available for lambda filter input.
 
 # The number of bits to use in a random hash.
@@ -23,7 +26,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 class MyParser(argparse.ArgumentParser):
     def print_help(self):
         super().print_help()
-        print("")
+        print()
         print(
             "To delete indices:\n\n\tcurl -X DELETE http://localhost:9200/zeek*?pretty\n"
         )
@@ -207,13 +210,10 @@ def sendbulk(args, outstring, es_index, filename):
             auth=auth,
             verify=False,
         )
-        if not res.ok:
-            if not args["supresswarnings"]:
-                print(
-                    "WARNING! PUT did not return OK! Your index {} is incomplete.  Filename: {} Response: {} {}".format(
-                        es_index, filename, res, res.text
-                    )
-                )
+        if not res.ok and not args["supresswarnings"]:
+            print(
+                f"WARNING! PUT did not return OK! Your index {es_index} is incomplete.  Filename: {filename} Response: {res} {res.text}"
+            )
     else:
         print(outstring)
 
@@ -309,7 +309,7 @@ def main(**args):
     if len(args["logkey"]) > 0:
         for lk in args["logkey"]:
             thefield, thefile = lk[0], lk[1]
-            f = open(thefile, "a+")
+            f = open(thefile, "a+")  # noqa: SIM115 (kept open for the life of main())
             logkeyfields.append(thefield)
             logkeys_fds.append(f)
 
@@ -331,25 +331,25 @@ def main(**args):
     if args["esindex"] and args["stdout"]:
         if not args["supresswarnings"]:
             print("Cannot write to Elasticsearch and stdout at the same time.")
-        exit(-1)
+        sys.exit(-1)
 
     # Error checking
     if args["nobulk"] and not args["stdout"]:
         if not args["supresswarnings"]:
             print("The nobulk option can only be used with the stdout option.")
-        exit(-2)
+        sys.exit(-2)
 
     # Error checking
     if not args["timestamp"] and args["origtime"]:
         if not args["supresswarnings"]:
             print("The origtime option can only be used with the timestamp option.")
-        exit(-3)
+        sys.exit(-3)
 
     # Error checking
     if len(args["lambdafilter"]) > 0 and len(args["filterfile"]) > 0:
         if not args["supresswarnings"]:
             print("The lambdafilter option cannot be used with the filterfile option.")
-        exit(-7)
+        sys.exit(-7)
 
     # This takes care of loading the Python filters.
     filterfilter = None
@@ -436,11 +436,11 @@ def main(**args):
             log_date = datetime.datetime.strptime(
                 grep_process.communicate()[0].decode("UTF-8").strip().split("\t")[1],
                 "%Y-%m-%d-%H-%M-%S",
-            )
+            ).astimezone()
         except:  # noqa: E722
             if not args["supresswarnings"]:
-                print("Date not found from Zeek log! {}".format(filename))
-            exit(-4)
+                print(f"Date not found from Zeek log! {filename}")
+            sys.exit(-4)
 
         # Get the Zeek log path
 
@@ -466,13 +466,13 @@ def main(**args):
             # We allow for hashes instead of dates in the index name.
             if not args["hashdates"]:
                 es_index = (
-                    "zeek_" + sysname + "{}_{}".format(zeek_log_path, log_date.date())
+                    "zeek_" + sysname + f"{zeek_log_path}_{log_date.date()}"
                 )
             else:
                 es_index = (
                     "zeek_"
                     + sysname
-                    + "{}_{}".format(zeek_log_path, random.getrandbits(hashbits))
+                    + f"{zeek_log_path}_{random.getrandbits(hashbits)}"
                 )
         else:
             es_index = args["esindex"]
@@ -532,14 +532,14 @@ def main(**args):
 
             mappings = {
                 "mappings": {
-                    "properties": dict(
-                        geoip_orig=dict(
-                            properties=dict(location=dict(type="geo_point"))
-                        ),
-                        geoip_resp=dict(
-                            properties=dict(location=dict(type="geo_point"))
-                        ),
-                    )
+                    "properties": {
+                        "geoip_orig": {
+                            "properties": {"location": {"type": "geo_point"}}
+                        },
+                        "geoip_resp": {
+                            "properties": {"location": {"type": "geo_point"}}
+                        },
+                    }
                 }
             }
 
@@ -575,14 +575,13 @@ def main(**args):
             # Iterate through every row in the TSV.
             for row in read_tsv:
                 # Build the dict and fill in any default info.
-                d = dict(zeek_log_filename=filename, zeek_log_path=zeek_log_path)
+                d = {"zeek_log_filename": filename, "zeek_log_path": zeek_log_path}
                 if len(args["name"]) > 0:
                     d["zeek_log_system_name"] = args["name"]
-                i = 0
                 added_val = False
 
                 # For each column in the row.
-                for col in row:
+                for i, col in enumerate(row):
                     # Process the data using a method for each type.  We also will only output fields of a certain name,
                     # if identified on the command line.
                     if types[i] == "time":
@@ -592,11 +591,9 @@ def main(**args):
                             and col != ""
                             and (ofl == 0 or fields[i] in outputfields)
                         ):
-                            gmt_mydt = datetime.datetime.utcfromtimestamp(float(col))
+                            gmt_mydt = datetime.datetime.fromtimestamp(float(col), tz=datetime.UTC)
                             if not args["timestamp"]:
-                                d[fields[i]] = "{}T{}".format(
-                                    gmt_mydt.date(), gmt_mydt.time()
-                                )
+                                d[fields[i]] = f"{gmt_mydt.date()}T{gmt_mydt.time()}"
                             else:
                                 if args["origtime"]:
                                     d[fields[i]] = gmt_mydt.timestamp()
@@ -648,7 +645,6 @@ def main(**args):
                         ):
                             d[fields[i]] = col
                             added_val = True
-                    i += 1
 
                 # Here we only add data if there is a timestamp, and if the filter keys are used we make sure our key exists.
                 if (
@@ -669,8 +665,7 @@ def main(**args):
                     # If we haven't filtered using the Python filter function...
                     if not filter_data:
                         # Log the keys to a file, if desired.
-                        i = 0
-                        for lkf in logkeyfields:
+                        for i, lkf in enumerate(logkeyfields):
                             lkfd = logkeys_fds[i]
                             if lkf in d:
                                 if isinstance(d[lkf], list):
@@ -680,11 +675,10 @@ def main(**args):
                                 else:
                                     lkfd.write(d[lkf])
                                     lkfd.write("\n")
-                            i += 1
 
                         # Create the bulk header.
                         if not args["nobulk"]:
-                            i = dict(create=dict(_index=es_index))
+                            i = {"create": {"_index": es_index}}
                             if len(ingest_pipeline["processors"]) > 0:
                                 i["create"]["pipeline"] = "zeekgeoip"
                             outstring += json.dumps(i) + "\n"
@@ -730,11 +724,11 @@ def main(**args):
 
         mappings = {
             "mappings": {
-                "properties": dict(
-                    ts=dict(type="date"),
-                    geoip_orig=dict(properties=dict(location=dict(type="geo_point"))),
-                    geoip_resp=dict(properties=dict(location=dict(type="geo_point"))),
-                )
+                "properties": {
+                    "ts": {"type": "date"},
+                    "geoip_orig": {"properties": {"location": {"type": "geo_point"}}},
+                    "geoip_resp": {"properties": {"location": {"type": "geo_point"}}},
+                }
             }
         }
         mappings["mappings"]["properties"]["id.orig_h"] = {"type": "ip"}
@@ -757,10 +751,10 @@ def main(**args):
             # Only process data that has a timestamp field.
             if "ts" in j_data:
                 # Here we deal with the time output format.
-                gmt_mydt = datetime.datetime.utcfromtimestamp(float(j_data["ts"]))
+                gmt_mydt = datetime.datetime.fromtimestamp(float(j_data["ts"]), tz=datetime.UTC)
 
                 if not args["timestamp"]:
-                    j_data["ts"] = "{}T{}".format(gmt_mydt.date(), gmt_mydt.time())
+                    j_data["ts"] = f"{gmt_mydt.date()}T{gmt_mydt.time()}"
                 else:
                     if args["origtime"]:
                         j_data["ts"] = gmt_mydt.timestamp()
@@ -778,25 +772,19 @@ def main(**args):
                     # Since the JSON logs do not include the Zeek log path, we try to guess it from the name.
                     try:
                         zeek_log_path = (
-                            re.search(".*\/([^\._]+).*", filename).group(1).lower()
+                            re.search(r".*\/([^\._]+).*", filename).group(1).lower()
                         )
                     except:  # noqa: E722
                         print(
-                            "Log path cannot be found from filename: {}".format(
-                                filename
-                            )
+                            f"Log path cannot be found from filename: {filename}"
                         )
-                        exit(-5)
+                        sys.exit(-5)
 
                     # We allow for hahes instead of dates in our index name.
                     if not args["hashdates"]:
-                        es_index = "zeek_{}{}_{}".format(
-                            sysname, zeek_log_path, gmt_mydt.date()
-                        )
+                        es_index = f"zeek_{sysname}{zeek_log_path}_{gmt_mydt.date()}"
                     else:
-                        es_index = "zeek_{}{}_{}".format(
-                            sysname, zeek_log_path, random.getrandbits(hashbits)
-                        )
+                        es_index = f"zeek_{sysname}{zeek_log_path}_{random.getrandbits(hashbits)}"
 
                     es_index = es_index.replace(":", "_").replace("/", "_")
 
@@ -829,8 +817,7 @@ def main(**args):
 
                     if not filter_data:
                         # We log the keys, if so desired.
-                        i = 0
-                        for lkf in logkeyfields:
+                        for i, lkf in enumerate(logkeyfields):
                             lkfd = logkeys_fds[i]
                             if lkf in j_data:
                                 if isinstance(j_data[lkf], list):
@@ -840,11 +827,10 @@ def main(**args):
                                 else:
                                     lkfd.write(j_data[lkf])
                                     lkfd.write("\n")
-                            i += 1
                         items += 1
 
                         if not args["nobulk"]:
-                            i = dict(create=dict(_index=es_index))
+                            i = {"create": {"_index": es_index}}
                             if len(ingest_pipeline["processors"]) > 0:
                                 i["create"]["pipeline"] = "zeekgeoip"
                             outstring += json.dumps(i) + "\n"

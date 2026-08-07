@@ -20,4 +20,3 @@ if [[ ${COUNT} -gt 1 ]]; then
         run_container
     fi
 fi
-

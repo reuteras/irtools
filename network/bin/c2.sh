@@ -12,4 +12,3 @@ if [[ $(uname) == "Darwin" ]]; then
 else
     sed -i'' -e "s/CHANGEME/${c2}/" rita.yaml
 fi
-

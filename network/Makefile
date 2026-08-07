@@ -31,7 +31,7 @@ zeek-json-import: output-json
 create-capinfos:
 	./bin/tshark.sh
 
-output: 
+output:
 	mkdir -p output
 
 output-json:
