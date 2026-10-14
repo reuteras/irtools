@@ -21,7 +21,7 @@ RUN apt-get update && \
     rm -rf /usr/local/share/man /var/cache/debconf/*-old && \
     rm -rf /opt/Loki/.git*
 
-HEALTHCHECK CMD [ -f /opt/Loki/loki.py ] || exit 1
+HEALTHCHECK CMD ["test", "-f", "/opt/Loki/loki.py"]
 
 #ENTRYPOINT [ "/usr/bin/python3", "/opt/Loki/loki.py" ]
 CMD ["--help"]

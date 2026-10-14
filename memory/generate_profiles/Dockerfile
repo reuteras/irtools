@@ -24,9 +24,9 @@ RUN apt-get update --fix-missing && \
 
 COPY extract-vmlinux.sh .
 
-RUN useradd --create-home --shell /bin/bash profiles
-USER profiles
+RUN useradd --create-home --uid 10001 --shell /bin/bash profiles
+USER 10001
 
-HEALTHCHECK CMD [ -x /extract-vmlinux.sh ] || exit 1
+HEALTHCHECK CMD ["test", "-x", "/extract-vmlinux.sh"]
 
 CMD [ "/bin/bash" ]
