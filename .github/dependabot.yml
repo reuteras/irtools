@@ -12,6 +12,19 @@ updates:
         patterns:
           - "*"
 
+  - package-ecosystem: "docker"
+    directories:
+      - "/loki"
+      - "/memory/generate_profiles"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    groups:
+      docker-deps:
+        patterns:
+          - "*"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

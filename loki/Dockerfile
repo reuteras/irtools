@@ -1,5 +1,5 @@
 #checkov:skip=CKV_DOCKER_3: Loki needs root to read arbitrary files on scanned hosts/volumes
-FROM debian:trixie
+FROM debian:trixie@sha256:9c6e381421d0f48d1b8133e573f33c185ee16cbf505eda9c4a8a4791b25ea8a6
 WORKDIR /opt
 
 # hadolint ignore=DL3003,DL3005,DL3008,DL3027
