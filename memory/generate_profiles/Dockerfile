@@ -1,4 +1,4 @@
-FROM ubuntu:25.10@sha256:7cc5e35f6567ee8c66d2abb4aab0fd866669e6207c237c3a8f0947a5c7f17092
+FROM ubuntu:26.04@sha256:d66b366dac61b575bee2aef07e9c26e8070096fbe84a3d4d3eb0da069b5d76db
 
 WORKDIR /
 
@@ -6,6 +6,7 @@ COPY build.sh .
 
 # hadolint ignore=DL3003,DL3008,DL3027
 RUN apt-get update --fix-missing && \
+    apt-get upgrade -qqy && \
     apt-get install -qqy --no-install-recommends \
         build-essential \
         ca-certificates \
