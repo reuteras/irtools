@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "uv"
     directory: "/urlscan"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     cooldown:
       default-days: 7
     groups:
@@ -17,7 +17,7 @@ updates:
       - "/loki"
       - "/memory/generate_profiles"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     cooldown:
       default-days: 7
     groups:
@@ -28,7 +28,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     cooldown:
       default-days: 7
     groups:
@@ -39,7 +39,7 @@ updates:
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     cooldown:
       default-days: 7
     groups:
@@ -50,6 +50,6 @@ updates:
   - package-ecosystem: "docker"
     directory: "/.github/osv-scanner"
     schedule:
-      interval: "weekly"
+      interval: "daily"
     cooldown:
       default-days: 7
