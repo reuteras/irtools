@@ -53,3 +53,20 @@ updates:
       interval: "daily"
     cooldown:
       default-days: 7
+
+  # The "docker" ecosystem only reads Dockerfiles; images in compose files need this one
+  - package-ecosystem: "docker-compose"
+    directories:
+      - "/network"
+    schedule:
+      interval: "daily"
+    cooldown:
+      default-days: 7
+    # Patch/minor only: RITA needs mongo 4.2, and Elastic 7.17 -> 9 is a migration
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    groups:
+      compose-deps:
+        patterns:
+          - "*"
